@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<header th:replace="master/master :: header"></header>
+	<div class="container">
+		<div>
+			<div class="table-responsive">
+				<table class="table table-white">
+					<thead>
+						<tr>
+
+							<th>ID</th>
+							<th>DNI trabajador</th>
+							<th>DNI Empleador</th>
+							<th>Tipo trabajo</th>
+							<th>Operacion</th>
+							<th>Operacion</th>
+
+
+
+						</tr>
+					</thead>
+					<tbody id="postulantes-list">
+						<tr th:each="pos:${listaPostulante}">
+							<td th:text="${pos.idPostulante}"></td>
+							<td th:text="${pos.dniTrabajador}"></td>
+							<td th:text="${pos.dniEmpleador}"></td>
+							<td th:text="${pos.codigoTrabajo}"></td>
+
+							<td><a
+								th:href="@{'/ppostulante/goupdate/'+${pos.idPostulante}}">
+									Actualizar </a></td>
+
+							<td><a
+								th:href="@{/ppostulante/delete?id=}+${pos.idPostulante}">
+									Eliminar </a></td>
+
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

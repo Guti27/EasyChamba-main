@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<header th:replace="master/master :: header"></header>
+	<div class="container">
+		<div>
+			<div class="table-responsive">
+				<table class="table table-white">
+					<thead>
+						<tr>
+
+							<th>ID</th>
+							<th>DNI</th>
+							<th>Nombre</th>
+							<th>Apellido</th>
+							<th>Email</th>
+							<th>Fecha de nacimiento</th>
+							<th>Telefono</th>
+							<th>Operacion</th>
+							<th>Operacion</th>
+
+						</tr>
+					</thead>
+					<tbody id="personas-list">
+						<tr th:each="per:${listaPersonas}">
+							<td th:text="${per.idPerson}"></td>
+							<td th:text="${per.dniPerson}"></td>
+							<td th:text="${per.namePerson}"></td>
+							<td th:text="${per.lastNamePerson}"></td>
+							<td th:text="${per.emailPerson}"></td>
+
+							<td th:text="${#dates.format(per.birthDatePerson,'dd/MM/yyyy')}"></td>
+
+							<td th:text="${per.phonePerson}"></td>
+
+							<td><a th:href="@{'/ppersons/goupdate/'+${per.idPerson}}">
+									Actualizar </a></td>
+
+							<td><a th:href="@{/ppersons/delete?id=}+${per.idPerson}">
+									Eliminar </a></td>
+						</tr>
+					</tbody>
+
+					<div
+						class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+						aria-labelledby="userDropdown">
+						<a class="dropdown-item" href="#"> <i
+							class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Perfil
+						</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="#" data-toggle="modal"
+							data-target="#logoutModal"> <i
+							class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+							Cerrar sesión
+						</a>
+					</div>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

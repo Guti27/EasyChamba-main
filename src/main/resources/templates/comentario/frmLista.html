@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<header th:replace="master/master :: header"></header>
+	<div class="container">
+		<div>
+			<div class="table-responsive">
+				<table class="table table-white">
+					<thead>
+						<tr>
+
+							<th>ID</th>
+							<th>Contrato</th>
+							<th>Empleador</th>
+							<th>Comentario</th>
+							<th>Calificacion</th>
+																					
+							<th>Operacion</th>
+							<th>Operacion</th>
+
+						</tr>
+					</thead>
+					<tbody id="comentario-list">
+						<tr th:each="co:${listaComentario}">
+							<td th:text="${co.idComentario}"></td>
+							<td th:text="${co.idContrato}"></td>
+							<td th:text="${co.idEmpledor}"></td>
+							<td th:text="${co.addComentario}"></td>
+							<td th:text="${co.addCalificacion}"></td>
+
+							<td><a th:href="@{'/ccomentario/goupdate/'+${co.idComentario}}">
+									Actualizar </a></td>
+
+							<td><a th:href="@{/ccomentario/delete?id=}+${co.idComentario}">
+									Eliminar </a></td>
+
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

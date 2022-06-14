@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<header th:replace="master/master :: header"></header>
+	<div class="container">
+		<div>
+			<form th:action="@{/ppostulante/update}" method="post"
+				th:object="${pos}">
+
+				<div class="col-sm-12">
+					<label class="form-label">ID:</label> <input type="text"
+						th:field="*{idPostulante}" class="form-control"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">DNI trabajador:</label> <input
+						type="text" th:field="*{dniTrabajador}" class="form-control"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">DNI empleador:</label> <input type="text"
+						th:field="*{dniEmpleador}" class="form-control"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">Codigo Trabajo:</label> <input
+						type="text" th:field="*{codigoTrabajo}" class="form-control"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<input type="submit" value="Actualiza" class="btn btn-dark"></input>
+				</div>
+
+
+			</form>
+		</div>
+	</div>
+
+</body>
+</html>

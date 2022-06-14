@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<header th:replace="master/master :: header"></header>
+	<div class="container">
+		<div>
+			<form th:action="@{/ppersons/update}" method="post" th:object="${pe}">
+
+				<div class="col-sm-12">
+					<label class="form-label">ID:</label> <input type="text"
+						th:field="*{idPerson}" class="form-control" readonly="readonly"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">DNI:</label> <input type="text"
+						th:field="*{dniPerson}" class="form-control"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">Nombres:</label> <input type="text"
+						th:field="*{namePerson}" class="form-control"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">Apellidos:</label> <input type="text"
+						th:field="*{lastNamePerson}" class="form-control"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">Correo:</label> <input type="text"
+						th:field="*{emailPerson}" class="form-control"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">Fecha de nacimiento:</label> <input
+						type="date" th:field="*{birthDatePerson}" class="form-control"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">Telefono:</label> <input type="text"
+						th:field="*{phonePerson}" class="form-control"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<input type="submit" value="Actualizar" class="btn btn-dark"></input>
+				</div>
+
+
+			</form>
+		</div>
+	</div>
+
+</body>
+</html>
