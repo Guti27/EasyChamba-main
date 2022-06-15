@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import pe.edu.upc.demo.Entities.Trabajador;
+import pe.edu.upc.demo.ServiceInterface.IPersonService;
+import pe.edu.upc.demo.ServiceInterface.ITipoTrabajoService;
 import pe.edu.upc.demo.ServiceInterface.ITrabajadorService;
 
 @Controller
@@ -24,11 +26,17 @@ public class TrabajadorController {
 
 	@Autowired
 	private ITrabajadorService trabajadorService;
+	@Autowired
+	private IPersonService pService;
+	@Autowired
+	private ITipoTrabajoService tService;
 
 	@GetMapping("/new")
 	public String newTrabajador(Model model) {
 
 		model.addAttribute("t", new Trabajador());
+		model.addAttribute("listaPersonas", pService.list());
+		model.addAttribute("listaTipoTrabajo", tService.list());
 		return "trabajador/frmRegistro";
 	}
 
@@ -70,6 +78,9 @@ public class TrabajadorController {
 	public String goUpdateTrabajador(@PathVariable int id, Model model) {
 
 		Optional<Trabajador> objTra = trabajadorService.listID(id);
+		model.addAttribute("listaPersonas", pService.list());
+		model.addAttribute("listaTipoTrabajo", tService.list());
+
 		model.addAttribute("tra", objTra.get());
 		return "trabajador/frmActualiza";
 	}

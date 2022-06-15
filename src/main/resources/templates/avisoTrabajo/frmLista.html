@@ -14,8 +14,9 @@
 						<tr>
 
 							<th>ID</th>
-							<th>Aviso trabajo</th>
-							<th>Trabajador</th>
+							<th>Tipo trabajo</th>
+							<th>Empleador</th>
+							<th>Fecha publicacion</th>
 							<th>Operacion</th>
 							<th>Operacion</th>
 
@@ -23,18 +24,21 @@
 
 						</tr>
 					</thead>
-					<tbody id="postulantes-list">
-						<tr th:each="pos:${listaPostulante}">
-							<td th:text="${pos.idPostulante}"></td>
-							<td th:text="${pos.avisoTrabajo.idAvisoTrabajo}"></td>
-							<td th:text="${pos.trabajador.idTrabajador}"></td>
+					<tbody id="avisoTrabajo-list">
+						<tr th:each="tra:${listaAvisoTrabajo}">
+							<td th:text="${tra.idAvisoTrabajo}"></td>
+							<td th:text="${tra.tipoTrabajo.rubro}"></td>
+							<td th:text="${tra.empleador.idEmpleador}"></td>
+							<td th:text="${tra.fechaPublicacion}"></td>
+
+
 
 							<td><a
-								th:href="@{'/ppostulante/goupdate/'+${pos.idPostulante}}">
+								th:href="@{'/aavisoTrabajo/goupdate/'+${tra.idAvisoTrabajo}}">
 									Actualizar </a></td>
 
 							<td><a
-								th:href="@{/ppostulante/delete?id=}+${pos.idPostulante}">
+								th:href="@{/aavisoTrabajo/delete?id=}+${tra.idAvisoTrabajo}">
 									Eliminar </a></td>
 
 						</tr>

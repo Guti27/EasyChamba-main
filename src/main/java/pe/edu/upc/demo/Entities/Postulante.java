@@ -1,10 +1,11 @@
 package pe.edu.upc.demo.Entities;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -14,26 +15,24 @@ public class Postulante {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idPostulante;
 
-	@Column(name = "dniTrabajador")
-	private int dniTrabajador;
+	@ManyToOne
+	@JoinColumn(name = "avisoTrabajo")
+	private AvisoTrabajo avisoTrabajo;
 
-	@Column(name = "dniEmpleador")
-	private int dniEmpleador;
-
-	@Column(name = "CodigoTrabajo")
-	private int codigoTrabajo;
+	@ManyToOne
+	@JoinColumn(name = "trabajador")
+	private Trabajador trabajador;
 
 	public Postulante() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Postulante(int idPostulante, int dniTrabajador, int dniEmpleador, int codigoTrabajo) {
+	public Postulante(int idPostulante, AvisoTrabajo avisoTrabajo, Trabajador trabajador) {
 		super();
 		this.idPostulante = idPostulante;
-		this.dniTrabajador = dniTrabajador;
-		this.dniEmpleador = dniEmpleador;
-		this.codigoTrabajo = codigoTrabajo;
+		this.avisoTrabajo = avisoTrabajo;
+		this.trabajador = trabajador;
 	}
 
 	public int getIdPostulante() {
@@ -44,28 +43,20 @@ public class Postulante {
 		this.idPostulante = idPostulante;
 	}
 
-	public int getDniTrabajador() {
-		return dniTrabajador;
+	public AvisoTrabajo getAvisoTrabajo() {
+		return avisoTrabajo;
 	}
 
-	public void setDniTrabajador(int dniTrabajador) {
-		this.dniTrabajador = dniTrabajador;
+	public void setAvisoTrabajo(AvisoTrabajo avisoTrabajo) {
+		this.avisoTrabajo = avisoTrabajo;
 	}
 
-	public int getDniEmpleador() {
-		return dniEmpleador;
+	public Trabajador getTrabajador() {
+		return trabajador;
 	}
 
-	public void setDniEmpleador(int dniEmpleador) {
-		this.dniEmpleador = dniEmpleador;
-	}
-
-	public int getCodigoTrabajo() {
-		return codigoTrabajo;
-	}
-
-	public void setCodigoTrabajo(int codigoTrabajo) {
-		this.codigoTrabajo = codigoTrabajo;
+	public void setTrabajador(Trabajador trabajador) {
+		this.trabajador = trabajador;
 	}
 
 }

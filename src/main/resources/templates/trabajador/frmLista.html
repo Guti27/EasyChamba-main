@@ -14,8 +14,8 @@
 						<tr>
 
 							<th>ID</th>
-							<th>DNI</th>
-							<th>Codigo trabajo</th>
+							<th>Nombre</th>
+							<th>Tipo trabajo</th>
 							<th>Operacion</th>
 							<th>Operacion</th>
 
@@ -26,8 +26,8 @@
 					<tbody id="trabajadores-list">
 						<tr th:each="tra:${listaTrabajador}">
 							<td th:text="${tra.idTrabajador}"></td>
-							<td th:text="${tra.dni}"></td>
-							<td th:text="${tra.codigoTrabajador}"></td>
+							<td th:text="${tra.person.namePerson}"></td>
+							<td th:text="${tra.tipoTrabajo.rubro}"></td>
 
 							<td><a
 								th:href="@{'/ttrabajador/goupdate/'+${tra.idTrabajador}}">

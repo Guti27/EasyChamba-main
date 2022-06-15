@@ -1,10 +1,12 @@
 package pe.edu.upc.demo.Entities;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -14,22 +16,24 @@ public class Trabajador {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idTrabajador;
 
-	@Column(name = "dni")
-	private int dni;
+	@OneToOne
+	@JoinColumn(name = "idPerson")
+	private Person person;
 
-	@Column(name = "codigoTrabajador")
-	private int codigoTrabajador;
+	@ManyToOne
+	@JoinColumn(name = "idTipoTrabajo")
+	private TipoTrabajo tipoTrabajo;
 
 	public Trabajador() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Trabajador(int idTrabajador, int dni, int codigoTrabajador) {
+	public Trabajador(int idTrabajador, Person person, TipoTrabajo tipoTrabajo) {
 		super();
 		this.idTrabajador = idTrabajador;
-		this.dni = dni;
-		this.codigoTrabajador = codigoTrabajador;
+		this.person = person;
+		this.tipoTrabajo = tipoTrabajo;
 	}
 
 	public int getIdTrabajador() {
@@ -40,20 +44,20 @@ public class Trabajador {
 		this.idTrabajador = idTrabajador;
 	}
 
-	public int getDni() {
-		return dni;
+	public Person getPerson() {
+		return person;
 	}
 
-	public void setDni(int dni) {
-		this.dni = dni;
+	public void setPerson(Person person) {
+		this.person = person;
 	}
 
-	public int getCodigoTrabajador() {
-		return codigoTrabajador;
+	public TipoTrabajo getTipoTrabajo() {
+		return tipoTrabajo;
 	}
 
-	public void setCodigoTrabajador(int codigoTrabajador) {
-		this.codigoTrabajador = codigoTrabajador;
+	public void setTipoTrabajo(TipoTrabajo tipoTrabajo) {
+		this.tipoTrabajo = tipoTrabajo;
 	}
 
 }

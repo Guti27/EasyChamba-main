@@ -14,9 +14,8 @@
 						<tr>
 
 							<th>ID</th>
-							<th>DNI trabajador</th>
-							<th>DNI Empleador</th>
-							<th>Tipo trabajo</th>
+							<th>Aviso trabajo</th>
+							<th>Trabajador</th>
 							<th>Operacion</th>
 							<th>Operacion</th>
 
@@ -27,9 +26,8 @@
 					<tbody id="postulantes-list">
 						<tr th:each="pos:${listaPostulante}">
 							<td th:text="${pos.idPostulante}"></td>
-							<td th:text="${pos.dniTrabajador}"></td>
-							<td th:text="${pos.dniEmpleador}"></td>
-							<td th:text="${pos.codigoTrabajo}"></td>
+							<td th:text="${pos.avisoTrabajo.idAvisoTrabajo}"></td>
+							<td th:text="${pos.trabajador.idTrabajador}"></td>
 
 							<td><a
 								th:href="@{'/ppostulante/goupdate/'+${pos.idPostulante}}">

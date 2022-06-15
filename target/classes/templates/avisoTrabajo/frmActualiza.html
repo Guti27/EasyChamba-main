@@ -9,26 +9,14 @@
 	<header th:replace="master/master :: header"></header>
 	<div class="container">
 		<div>
-			<form th:action="@{/ttrabajador/update}" method="post"
-				th:object="${tra}">
+			<form th:action="@{/aavisoTrabajo/update}" method="post"
+				th:object="${at}">
 
 				<div class="col-sm-12">
 					<label class="form-label">ID:</label> <input type="text"
-						th:field="*{idTrabajador}" class="form-control"></input>
+						th:field="*{idAvisoTrabajo}" class="form-control"></input>
 				</div>
 
-				<div class="col-sm-12">
-					<label class="form-label">Nombre:</label> <select
-						name="selectPerson" class="form-control"
-						th:field="*{person.idPerson}">
-
-						<option th:each="p:${listaPersonas}" th:value="${p.idPerson}"
-							th:text="${p.namePerson}"
-							th:selected="(${p.idPerson}==*{person.idPerson})"></option>
-
-					</select>
-
-				</div>
 
 				<div class="col-sm-12">
 					<label class="form-label">Tipo Trabajo:</label> <select
@@ -44,7 +32,30 @@
 				</div>
 
 				<div class="col-sm-12">
-					<input type="submit" value="Actualizar" class="btn btn-dark"></input>
+					<label class="form-label">Empleador:</label> <select
+						name="selectEmpleador" class="form-control"
+						th:field="*{empleador.idEmpleador}">
+
+						<option th:each="p:${listaEmpleador}" th:value="${p.idEmpleador}"
+							th:text="${p.idEmpleador}"
+							th:selected="(${p.idEmpleador}==*{empleador.idEmpleador})"></option>
+
+					</select>
+
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">Fecha de nacimiento:</label> <input
+						type="date" th:field="*{fechaPublicacion}" class="form-control"></input>
+				</div>
+
+
+
+
+
+
+				<div class="col-sm-12">
+					<input type="submit" value="Registrar" class="btn btn-dark"></input>
 				</div>
 
 

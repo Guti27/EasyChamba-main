@@ -14,22 +14,24 @@
 						<tr>
 
 							<th>ID</th>
-							<th>DNI Usuario</th>
+							<th>Nombre empleador</th>
+							<th>Operacion</th>
+							<th>Operacion</th>
+
 
 						</tr>
 					</thead>
 					<tbody id="empleador-list">
 						<tr th:each="em:${listaEmpleador}">
 							<td th:text="${em.idEmpleador}"></td>
-							<td th:text="${em.dniUsuario}"></td>
-							
+							<td th:text="${em.person.namePerson}"></td>
+
 
 							<td><a
 								th:href="@{'/eempleador/goupdate/'+${em.idEmpleador}}">
 									Actualizar </a></td>
 
-							<td><a
-								th:href="@{/eempleador/delete?id=}+${em.idEmpleador}">
+							<td><a th:href="@{/eempleador/delete?id=}+${em.idEmpleador}">
 									Eliminar </a></td>
 
 						</tr>

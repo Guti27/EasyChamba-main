@@ -18,8 +18,16 @@
 				</div>
 
 				<div class="col-sm-12">
-					<label class="form-label">DNI Usuario:</label> <input
-						type="text" th:field="*{dniUsuario}" class="form-control"></input>
+					<label class="form-label">Nombre:</label> <select
+						name="selectPerson" class="form-control"
+						th:field="*{person.idPerson}">
+
+						<option th:each="p:${listaPersonas}" th:value="${p.idPerson}"
+							th:text="${p.namePerson}"
+							th:selected="(${p.idPerson}==*{person.idPerson})"></option>
+
+					</select>
+
 				</div>
 
 				<div class="col-sm-12">

@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "TipoTrabajo")
+@Table(name = "tipotrabajo")
 public class TipoTrabajo {
 
 	@Id
@@ -29,7 +29,6 @@ public class TipoTrabajo {
 		// TODO Auto-generated constructor stub
 	}
 
-	
 	public TipoTrabajo(int idTipoTrabajo, String rubro, String especialidad, String carrera) {
 		super();
 		this.idTipoTrabajo = idTipoTrabajo;
@@ -37,7 +36,6 @@ public class TipoTrabajo {
 		this.especialidad = especialidad;
 		this.carrera = carrera;
 	}
-
 
 	public int getIdTipoTrabajo() {
 		return idTipoTrabajo;

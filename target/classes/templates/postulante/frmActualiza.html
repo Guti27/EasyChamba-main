@@ -18,19 +18,31 @@
 				</div>
 
 				<div class="col-sm-12">
-					<label class="form-label">DNI trabajador:</label> <input
-						type="text" th:field="*{dniTrabajador}" class="form-control"></input>
+					<label class="form-label">Aviso trabajo</label> <select
+						name="selectAvisoTrabajo" class="form-control"
+						th:field="*{avisoTrabajo.idAvisoTrabajo}">
+
+						<option th:each="p:${listaAvisoTrabajo}"
+							th:value="${p.idAvisoTrabajo}" th:text="${p.idAvisoTrabajo}"
+							th:selected="(${p.idAvisoTrabajo}==*{avisoTrabajo.idAvisoTrabajo})"></option>
+
+					</select>
+
 				</div>
 
 				<div class="col-sm-12">
-					<label class="form-label">DNI empleador:</label> <input type="text"
-						th:field="*{dniEmpleador}" class="form-control"></input>
+					<label class="form-label">Trabajador:</label> <select
+						name="selectEmpleador" class="form-control"
+						th:field="*{trabajador.idTrabajador}">
+
+						<option th:each="p:${listaTrabajador}"
+							th:value="${p.idTrabajador}" th:text="${p.idTrabajador}"
+							th:selected="(${p.idTrabajador}==*{trabajador.idTrabajador})"></option>
+
+					</select>
+
 				</div>
 
-				<div class="col-sm-12">
-					<label class="form-label">Codigo Trabajo:</label> <input
-						type="text" th:field="*{codigoTrabajo}" class="form-control"></input>
-				</div>
 
 				<div class="col-sm-12">
 					<input type="submit" value="Actualiza" class="btn btn-dark"></input>

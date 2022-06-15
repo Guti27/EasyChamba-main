@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import pe.edu.upc.demo.Entities.Postulante;
+import pe.edu.upc.demo.ServiceInterface.IAvisoTrabajoService;
 import pe.edu.upc.demo.ServiceInterface.IPostulanteService;
+import pe.edu.upc.demo.ServiceInterface.ITrabajadorService;
 
 @Controller
 @RequestMapping("/ppostulante")
@@ -25,10 +27,17 @@ public class PostulanteController {
 	@Autowired
 	private IPostulanteService postulanteService;
 
+	@Autowired
+	private ITrabajadorService tservie;
+	@Autowired
+	private IAvisoTrabajoService aService;
+
 	@GetMapping("/new")
 	public String newPostulante(Model model) {
 
 		model.addAttribute("p", new Postulante());
+		model.addAttribute("listaTrabajador", tservie.list());
+		model.addAttribute("listaAvisoTrabajo", aService.list());
 		return "postulante/frmRegistro";
 	}
 
@@ -70,6 +79,8 @@ public class PostulanteController {
 	public String goUpdatePostulante(@PathVariable int id, Model model) {
 
 		Optional<Postulante> objPos = postulanteService.listID(id);
+		model.addAttribute("listaTrabajador", tservie.list());
+		model.addAttribute("listaAvisoTrabajo", aService.list());
 		model.addAttribute("pos", objPos.get());
 		return "postulante/frmActualiza";
 	}

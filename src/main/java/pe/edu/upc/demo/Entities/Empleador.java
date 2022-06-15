@@ -1,32 +1,33 @@
 package pe.edu.upc.demo.Entities;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="empleador")
+@Table(name = "empleador")
 public class Empleador {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public int idEmpleador;
-	
-	@Column(name="dniUsuario")
-	public int dniUsuario;
-	
-	
+
+	@OneToOne
+	@JoinColumn(name = "idPerson")
+	private Person person;
+
 	public Empleador() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Empleador(int idEmpleador, int dniUsuario) {
+	public Empleador(int idEmpleador, Person person) {
 		super();
 		this.idEmpleador = idEmpleador;
-		this.dniUsuario = dniUsuario;
+		this.person = person;
 	}
 
 	public int getIdEmpleador() {
@@ -37,12 +38,12 @@ public class Empleador {
 		this.idEmpleador = idEmpleador;
 	}
 
-	public int getDniUsuario() {
-		return dniUsuario;
+	public Person getPerson() {
+		return person;
 	}
 
-	public void setDniUsuario(int dniUsuario) {
-		this.dniUsuario = dniUsuario;
+	public void setPerson(Person person) {
+		this.person = person;
 	}
 
 }

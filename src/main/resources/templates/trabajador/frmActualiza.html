@@ -18,13 +18,29 @@
 				</div>
 
 				<div class="col-sm-12">
-					<label class="form-label">DNI:</label> <input type="text"
-						th:field="*{dni}" class="form-control"></input>
+					<label class="form-label">Nombre:</label> <select
+						name="selectPerson" class="form-control"
+						th:field="*{person.idPerson}">
+
+						<option th:each="p:${listaPersonas}" th:value="${p.idPerson}"
+							th:text="${p.namePerson}"
+							th:selected="(${p.idPerson}==*{person.idPerson})"></option>
+
+					</select>
+
 				</div>
 
 				<div class="col-sm-12">
-					<label class="form-label">Codigo trabajo:</label> <input
-						type="text" th:field="*{codigoTrabajador}" class="form-control"></input>
+					<label class="form-label">Tipo Trabajo:</label> <select
+						name="selectTipoTrabajo" class="form-control"
+						th:field="*{tipoTrabajo.idTipoTrabajo}">
+
+						<option th:each="p:${listaTipoTrabajo}"
+							th:value="${p.idTipoTrabajo}" th:text="${p.rubro}"
+							th:selected="(${p.idTipoTrabajo}==*{tipoTrabajo.idTipoTrabajo})"></option>
+
+					</select>
+
 				</div>
 
 				<div class="col-sm-12">
