@@ -11,14 +11,31 @@
 		<div>
 			<form th:action="@{/ccomentario/save}" method="post" th:object="${c}">
 
+
 				<div class="col-sm-12">
-					<label class="form-label">Contrato:</label> <input type="text"
-						th:field="*{idContrato}" class="form-control"></input>
+					<label class="form-label">Contrato:</label> <select
+						name="selectTipoTrabajo" class="form-control"
+						th:field="*{contrato.idContrato}">
+
+						<option th:each="p:${listaContrato}" th:value="${p.idContrato}"
+							th:text="${p.idContrato}"
+							th:selected="(${p.idContrato}==*{contrato.idContrato})"></option>
+
+					</select>
+
 				</div>
 
 				<div class="col-sm-12">
-					<label class="form-label">Empleador:</label> <input type="text"
-						th:field="*{idEmpledor}" class="form-control"></input>
+					<label class="form-label">Empleador:</label> <select
+						name="selectTipoTrabajo" class="form-control"
+						th:field="*{empleador.idEmpleador}">
+
+						<option th:each="p:${listaEmpleador}" th:value="${p.idEmpleador}"
+							th:text="${p.idEmpleador}"
+							th:selected="(${p.idEmpleador}==*{empleador.idEmpleador})"></option>
+
+					</select>
+
 				</div>
 
 				<div class="col-sm-12">

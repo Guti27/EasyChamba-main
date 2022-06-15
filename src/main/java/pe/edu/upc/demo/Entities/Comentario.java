@@ -5,40 +5,43 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Comentario")
+@Table(name = "Comentario")
 public class Comentario {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idComentario;
-	
-	@Column(name="idContrato")
-	private String idContrato;
-	
-	@Column(name="idEmpledor")
-	private String idEmpledor;
-	
-	@Column(name="addComentario")
+
+	@ManyToOne
+	@JoinColumn(name = "idContrato")
+	private Contrato contrato;
+
+	@ManyToOne
+	@JoinColumn(name = "idempleador")
+	private Empleador empleador;
+
+	@Column(name = "addComentario")
 	private String addComentario;
-	
-	@Column(name="addCalificacion")
+
+	@Column(name = "addCalificacion")
 	private String addCalificacion;
-	
 
 	public Comentario() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Comentario(int idComentario, String idContrato, String idEmpledor, String addComentario,
+	public Comentario(int idComentario, Contrato contrato, Empleador empleador, String addComentario,
 			String addCalificacion) {
 		super();
 		this.idComentario = idComentario;
-		this.idContrato = idContrato;
-		this.idEmpledor = idEmpledor;
+		this.contrato = contrato;
+		this.empleador = empleador;
 		this.addComentario = addComentario;
 		this.addCalificacion = addCalificacion;
 	}
@@ -51,20 +54,20 @@ public class Comentario {
 		this.idComentario = idComentario;
 	}
 
-	public String getIdContrato() {
-		return idContrato;
+	public Contrato getContrato() {
+		return contrato;
 	}
 
-	public void setIdContrato(String idContrato) {
-		this.idContrato = idContrato;
+	public void setContrato(Contrato contrato) {
+		this.contrato = contrato;
 	}
 
-	public String getIdEmpledor() {
-		return idEmpledor;
+	public Empleador getEmpleador() {
+		return empleador;
 	}
 
-	public void setIdEmpledor(String idEmpledor) {
-		this.idEmpledor = idEmpledor;
+	public void setEmpleador(Empleador empleador) {
+		this.empleador = empleador;
 	}
 
 	public String getAddComentario() {
@@ -82,7 +85,5 @@ public class Comentario {
 	public void setAddCalificacion(String addCalificacion) {
 		this.addCalificacion = addCalificacion;
 	}
-	
-	
-	
+
 }

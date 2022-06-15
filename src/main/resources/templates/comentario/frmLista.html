@@ -18,7 +18,7 @@
 							<th>Empleador</th>
 							<th>Comentario</th>
 							<th>Calificacion</th>
-																					
+
 							<th>Operacion</th>
 							<th>Operacion</th>
 
@@ -27,15 +27,17 @@
 					<tbody id="comentario-list">
 						<tr th:each="co:${listaComentario}">
 							<td th:text="${co.idComentario}"></td>
-							<td th:text="${co.idContrato}"></td>
-							<td th:text="${co.idEmpledor}"></td>
+							<td th:text="${co.contrato.idContrato}"></td>
+							<td th:text="${co.empleador.idEmpleador}"></td>
 							<td th:text="${co.addComentario}"></td>
 							<td th:text="${co.addCalificacion}"></td>
 
-							<td><a th:href="@{'/ccomentario/goupdate/'+${co.idComentario}}">
+							<td><a
+								th:href="@{'/ccomentario/goupdate/'+${co.idComentario}}">
 									Actualizar </a></td>
 
-							<td><a th:href="@{/ccomentario/delete?id=}+${co.idComentario}">
+							<td><a
+								th:href="@{/ccomentario/delete?id=}+${co.idComentario}">
 									Eliminar </a></td>
 
 						</tr>

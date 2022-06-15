@@ -14,30 +14,27 @@
 						<tr>
 
 							<th>ID</th>
-							<th>Contrato</th>
-							<th>Empleador</th>
-							<th>Comentario</th>
-							<th>Calificacion</th>
+							<th>Postulante</th>
+							<th>Fecha inicio</th>
+							<th>Fecha Fin</th>
+							<th>Operacion</th>
+							<th>Operacion</th>
 
-							<th>Operacion</th>
-							<th>Operacion</th>
+
 
 						</tr>
 					</thead>
-					<tbody id="comentario-list">
-						<tr th:each="co:${listaComentario}">
-							<td th:text="${co.idComentario}"></td>
-							<td th:text="${co.contrato.idContrato}"></td>
-							<td th:text="${co.empleador.idEmpleador}"></td>
-							<td th:text="${co.addComentario}"></td>
-							<td th:text="${co.addCalificacion}"></td>
+					<tbody id="contrato-list">
+						<tr th:each="c:${listaContrato}">
+							<td th:text="${c.idContrato}"></td>
+							<td th:text="${c.postulante.idPostulante}"></td>
+							<td th:text="${c.fechaInicio}"></td>
+							<td th:text="${c.fechaFin}"></td>
 
-							<td><a
-								th:href="@{'/ccomentario/goupdate/'+${co.idComentario}}">
+							<td><a th:href="@{'/ccontrato/goupdate/'+${c.idContrato}}">
 									Actualizar </a></td>
 
-							<td><a
-								th:href="@{/ccomentario/delete?id=}+${co.idComentario}">
+							<td><a th:href="@{/ccontrato/delete?id=}+${c.idContrato}">
 									Eliminar </a></td>
 
 						</tr>
