@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="master/master :: head"></head>
 <meta charset="UTF-8"></meta>
 
@@ -24,7 +25,6 @@
 								<th>Id</th>
 								<th>Username</th>
 								<th>Estado</th>
-
 							</tr>
 						</thead>
 						<tbody id="persona-list">
@@ -32,7 +32,6 @@
 								<td th:text="${u.id}"></td>
 								<td th:text="${u.username}"></td>
 								<td th:text="${u.enabled}"></td>
-
 							</tr>
 						</tbody>
 					</table>

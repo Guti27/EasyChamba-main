@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="master/master :: head">
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -32,11 +33,11 @@
 							<td th:text="${co.addComentario}"></td>
 							<td th:text="${co.addCalificacion}"></td>
 
-							<td><a
+							<td><a sec:authorize="hasRole('ROLE_ADMIN')"
 								th:href="@{'/ccomentario/goupdate/'+${co.idComentario}}">
 									Actualizar </a></td>
 
-							<td><a
+							<td><a sec:authorize="hasRole('ROLE_ADMIN')"
 								th:href="@{/ccomentario/delete?id=}+${co.idComentario}">
 									Eliminar </a></td>
 

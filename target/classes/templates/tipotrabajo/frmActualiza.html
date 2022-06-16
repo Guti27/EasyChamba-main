@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="master/master :: head">
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -14,7 +15,8 @@
 
 				<div class="col-sm-12">
 					<label class="form-label">ID:</label> <input type="text"
-						th:field="*{idTipoTrabajo}" class="form-control" readonly="readonly"></input>
+						th:field="*{idTipoTrabajo}" class="form-control"
+						readonly="readonly"></input>
 				</div>
 
 				<div class="col-sm-12">

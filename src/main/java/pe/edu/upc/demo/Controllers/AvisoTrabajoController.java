@@ -23,7 +23,6 @@ import pe.edu.upc.demo.ServiceInterface.ITipoTrabajoService;
 
 @Controller
 @RequestMapping("/aavisoTrabajo")
-@Secured("ROLE_TRABAJADOR")
 public class AvisoTrabajoController {
 
 	@Autowired

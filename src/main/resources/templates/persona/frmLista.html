@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="master/master :: head">
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -40,24 +41,11 @@
 							<td><a th:href="@{'/ppersons/goupdate/'+${per.idPerson}}">
 									Actualizar </a></td>
 
-							<td><a th:href="@{/ppersons/delete?id=}+${per.idPerson}">
+							<td><a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/ppersons/delete?id=}+${per.idPerson}">
 									Eliminar </a></td>
 						</tr>
 					</tbody>
-
-					<div
-						class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-						aria-labelledby="userDropdown">
-						<a class="dropdown-item" href="#"> <i
-							class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Perfil
-						</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#" data-toggle="modal"
-							data-target="#logoutModal"> <i
-							class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-							Cerrar sesión
-						</a>
-					</div>
+					
 				</table>
 			</div>
 		</div>

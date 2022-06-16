@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="master/master :: head">
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -10,7 +11,7 @@
 		<div>
 			<div class="table-responsive">
 				<table class="table table-white">
-				
+
 					<thead>
 						<tr>
 
@@ -23,23 +24,25 @@
 
 						</tr>
 					</thead>
-					
+
 					<tbody id="tipotrabajo-list">
 						<tr th:each="tip:${listaTipoTrabajo}">
 							<td th:text="${tip.idTipoTrabajo}"></td>
 							<td th:text="${tip.rubro}"></td>
 							<td th:text="${tip.especialidad}"></td>
 							<td th:text="${tip.carrera}"></td>
-							
-							<td><a th:href="@{'/ttipotrabajo/goupdate/'+${tip.idTipoTrabajo}}">
+
+							<td><a sec:authorize="hasRole('ROLE_ADMIN')"
+								th:href="@{'/ttipotrabajo/goupdate/'+${tip.idTipoTrabajo}}">
 									Actualizar </a></td>
 
-							<td><a th:href="@{/ttipotrabajo/delete?id=}+${tip.idTipoTrabajo}">
+							<td><a sec:authorize="hasRole('ROLE_ADMIN')"
+								th:href="@{/ttipotrabajo/delete?id=}+${tip.idTipoTrabajo}">
 									Eliminar </a></td>
 
 						</tr>
 					</tbody>
-					
+
 				</table>
 			</div>
 

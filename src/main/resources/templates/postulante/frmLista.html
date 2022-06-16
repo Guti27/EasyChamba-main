@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="master/master :: head">
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -29,11 +30,11 @@
 							<td th:text="${pos.avisoTrabajo.idAvisoTrabajo}"></td>
 							<td th:text="${pos.trabajador.idTrabajador}"></td>
 
-							<td><a
+							<td><a sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_TRABAJADOR')"
 								th:href="@{'/ppostulante/goupdate/'+${pos.idPostulante}}">
 									Actualizar </a></td>
 
-							<td><a
+							<td><a sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_TRABAJADOR')"
 								th:href="@{/ppostulante/delete?id=}+${pos.idPostulante}">
 									Eliminar </a></td>
 

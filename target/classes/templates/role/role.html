@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="master/master :: head"></head>
 <meta charset="UTF-8"></meta>
 
@@ -25,7 +26,6 @@
 				</label>
 				<div class="col-sm-12">
 					<select name="select" th:field="*{rol}" class="form-control">
-						<option value="ROLE_ADMIN">Administrador</option>
 						<option value="ROLE_TRABAJADOR">Trabajador</option>
 						<option value="ROLE_EMPLEADOR">Empleador</option>
 
