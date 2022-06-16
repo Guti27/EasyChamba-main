@@ -8,6 +8,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -19,22 +26,37 @@ public class Person {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idPerson;
 	
+	@Size(min = 8, max = 8)
+	@NotEmpty(message = "Ingresa DNI")
 	@Column(name = "dniPerson", length = 8, nullable = false)
 	private String dniPerson;
 
+	@NotNull(message = "Capo Vacio")
+	@NotEmpty(message = "Ingresa el nombre")
+	@Size(min = 4, message = "Nombre incompleto")
 	@Column(name = "namePerson", length = 48, nullable = false)
 	private String namePerson;
 	
+	@NotNull(message = "Capo Vacio")
+	@NotEmpty(message = "Ingresa el apellido")
+	@Size(min = 4, message = "Apellido incompleto")
 	@Column(name = "lastNamePerson", length = 48, nullable = false)
 	private String lastNamePerson;
 	
+	@NotEmpty(message = "Ingresa Email")
+	@Email
 	@Column(name = "emailPerson", length = 35, nullable = false)
 	private String emailPerson;
 
+	@NotNull
+	@Past(message = "La fecha debe estar en el pasado")
+	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "birthDatePerson", nullable = false)
 	private Date birthDatePerson;
 
+	@Size(min = 9, max = 9)
+	@NotEmpty(message = "Ingresa Telefono")
 	@Column(name = "phonePerson", length = 9, nullable = false)
 	private String phonePerson;	
 

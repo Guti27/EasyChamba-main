@@ -15,32 +15,52 @@
 				<div class="col-sm-12">
 					<label class="form-label">DNI:</label> <input type="text"
 						maxlength="8" th:field="*{dniPerson}" class="form-control"></input>
+					<small th:errorclass="'form-control alert-danger'"
+						th:if="${#fields.hasErrors('dniPerson')}" th:errors="*{dniPerson}"></small>
 				</div>
 
 				<div class="col-sm-12">
 					<label class="form-label">Nombres:</label> <input type="text"
-						th:field="*{namePerson}" class="form-control"></input>
+						th:field="*{namePerson}" class="form-control"></input> <small
+						th:errorclass="'form-control alert-danger'"
+						th:if="${#fields.hasErrors('namePerson')}"
+						th:errors="*{namePerson}"></small>
 				</div>
 
 				<div class="col-sm-12">
 					<label class="form-label">Apellidos:</label> <input type="text"
-						th:field="*{lastNamePerson}" class="form-control"></input>
+						th:field="*{lastNamePerson}" class="form-control"></input> <small
+						th:errorclass="'form-control alert-danger'"
+						th:if="${#fields.hasErrors('lastNamePerson')}"
+						th:errors="*{lastNamePerson}"></small>
 				</div>
 
 				<div class="col-sm-12">
 					<label class="form-label">Correo:</label> <input type="email"
 						pattern=".+@[a-zA-Z0-9.-]+[.]+(.+)" th:field="*{emailPerson}"
-						class="form-control"></input>
+						class="form-control"></input> <small
+						th:errorclass="'form-control alert-danger'"
+						th:if="${#fields.hasErrors('emailPerson')}"
+						th:errors="*{emailPerson}"></small>
 				</div>
 
 				<div class="col-sm-12">
 					<label class="form-label">Fecha de nacimiento:</label> <input
 						type="date" th:field="*{birthDatePerson}" class="form-control"></input>
+						<div th:object="${p}" th:remove="tag">
+						<ul th:if="${#fields.hasErrors('birthDatePerson')}" class="alert alert-danger"
+							role="alert">
+							<li th:each="error : ${#fields.errors('birthDatePerson')}" th:text="${error}"></li>
+						</ul>
+					</div>
 				</div>
 
 				<div class="col-sm-12">
-					<label class="form-label">Telefono:</label> <input type="text" maxlength="9"
-						th:field="*{phonePerson}" class="form-control"></input>
+					<label class="form-label">Telefono:</label> <input type="text"
+						maxlength="9" th:field="*{phonePerson}" class="form-control"></input>
+					<small th:errorclass="'form-control alert-danger'"
+						th:if="${#fields.hasErrors('phonePerson')}"
+						th:errors="*{phonePerson}"></small>
 				</div>
 
 				<div class="col-sm-12">

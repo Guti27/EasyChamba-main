@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,12 +33,14 @@ public class PersonController {
 	}
 
 	@PostMapping("/save")
-	public String savePerson(@Valid Person pe, BindingResult binRes, Model model) {
+	public String savePerson(@Valid @ModelAttribute("p") Person pe, BindingResult binRes, Model model) {
 		if (binRes.hasErrors()) {
 			return "persona/frmRegistro";
 		} else {
 			personService.insert(pe);
-			model.addAttribute("mensaje", "Se registró correctamente");
+			model.addAttribute("mensaje", "Se guardó correctamente");
+			model.addAttribute("listaPersona", personService.list());
+			//status.setComplete();
 			return "redirect:/ppersons/list";
 		}
 	}
@@ -45,11 +48,12 @@ public class PersonController {
 	@GetMapping("/list")
 	public String listPerson(Model model) {
 		try {
+			model.addAttribute("p", new Person());
 			model.addAttribute("listaPersonas", personService.list());
 		} catch (Exception e) {
 			model.addAttribute("error", e.getMessage());
 		}
-		return "/persona/frmLista";
+		return "persona/frmLista";
 	}
 
 	@RequestMapping("/delete")
