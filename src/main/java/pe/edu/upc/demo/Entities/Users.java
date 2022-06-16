@@ -36,6 +36,19 @@ public class Users implements Serializable {
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "user_id")
 	private List<Role> roles;
+	
+	public Users() {
+		super();
+		// TODO Auto-generated constructor stub
+	}	
+
+	public Users(Long id, String username, String password, Boolean enabled) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.enabled = enabled;
+	}
 
 	public Long getId() {
 		return id;
@@ -75,6 +88,6 @@ public class Users implements Serializable {
 
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
-	}
+	}	
 
 }

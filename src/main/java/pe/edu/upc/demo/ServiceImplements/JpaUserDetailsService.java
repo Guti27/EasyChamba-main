@@ -28,7 +28,7 @@ public class JpaUserDetailsService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		// Busca al usuario con el repositorio
 		Users user = userRepository.findByUsername(username);
-		
+
 		// Mapear una lista de authority con la de spring security
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 

@@ -34,6 +34,7 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 
 		Users user = new Users();
+		user.setId((long) 1);
 		user.setUsername("admin");
 		user.setPassword("123");
 		user.setPassword(passwordEncoder.encode("123"));
@@ -52,7 +53,7 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
 		
 		Role rol = new Role();
 		rol.setRol("ROLE_ADMIN");
-		rol.setUser(null);
+		rol.setUser(user);
 		roleRepository.save(rol);
 		
 		//Role rol2 = new Role();
