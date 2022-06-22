@@ -15,21 +15,25 @@
 						<tr>
 
 							<th>ID</th>
+							<th>ID Tipo trabajo</th>
 							<th>Tipo trabajo</th>
+							<th>ID Empleador</th>
 							<th>Empleador</th>
 							<th>Fecha publicacion</th>
-							<th>Operacion</th>
-							<th>Operacion</th>
+							<th sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_EMPLEADOR')">Operacion</th>
+							<th sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_EMPLEADOR')">Operacion</th>
 
 
 
 						</tr>
-					</thead>
+					</thead>	
 					<tbody id="avisoTrabajo-list">
 						<tr th:each="tra:${listaAvisoTrabajo}">
 							<td th:text="${tra.idAvisoTrabajo}"></td>
+							<td th:text="${tra.tipoTrabajo.idTipoTrabajo}"></td>
 							<td th:text="${tra.tipoTrabajo.rubro}"></td>
 							<td th:text="${tra.empleador.idEmpleador}"></td>
+							<td th:text="${tra.empleador.person.namePerson}"></td>
 							<td th:text="${tra.fechaPublicacion}"></td>
 
 

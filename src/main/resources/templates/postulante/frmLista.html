@@ -15,10 +15,12 @@
 						<tr>
 
 							<th>ID</th>
+							<th>ID Aviso trabajo</th>
 							<th>Aviso trabajo</th>
+							<th>IDTrabajador</th>
 							<th>Trabajador</th>
-							<th>Operacion</th>
-							<th>Operacion</th>
+							<th sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_TRABAJADOR')">Operacion</th>
+							<th sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_TRABAJADOR')">Operacion</th>
 
 
 
@@ -28,7 +30,9 @@
 						<tr th:each="pos:${listaPostulante}">
 							<td th:text="${pos.idPostulante}"></td>
 							<td th:text="${pos.avisoTrabajo.idAvisoTrabajo}"></td>
+							<td th:text="${pos.avisoTrabajo.tipoTrabajo.rubro}"></td>
 							<td th:text="${pos.trabajador.idTrabajador}"></td>
+							<td th:text="${pos.trabajador.person.dniPerson}"></td>
 
 							<td><a sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_TRABAJADOR')"
 								th:href="@{'/ppostulante/goupdate/'+${pos.idPostulante}}">

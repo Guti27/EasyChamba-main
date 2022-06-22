@@ -53,9 +53,8 @@
 								<li><a class="dropdown-item" th:href="@{/roles/listar}">Listar</a></li>
 							</ul></li>
 
-						<li
-							sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_TRABAJADOR') or hasRole('ROLE_EMPLEADOR')"
-							class="nav-item dropdown"><a
+						<li sec:authorize="hasRole('ROLE_TRABAJADOR') or hasRole('ROLE_ADMIN') or hasRole('ROLE_EMPLEADOR')"
+						class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#"
 							id="navbarDropdownMenuLink" role="button"
 							data-bs-toggle="dropdown" aria-expanded="false"
@@ -64,6 +63,7 @@
 								aria-labelledby="navbarDropdownMenuLink">
 								<li><a class="dropdown-item" th:href="@{/ppersons/new}">Registrar</a></li>
 								<li><a class="dropdown-item" th:href="@{/ppersons/list}">Listar</a></li>
+								</sec:authorize>
 							</ul></li>
 
 						<li class="nav-item dropdown"><a
@@ -96,9 +96,8 @@
 
 							</ul></li>
 
-						<li
-							sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_EMPLEADOR')"
-							class="nav-item dropdown"><a
+						<li class="nav-item dropdown"><a
+							sec:authorize="hasRole('ROLE_ADMIN')"
 							class="nav-link dropdown-toggle" href="#"
 							id="navbarDropdownMenuLink" role="button"
 							data-bs-toggle="dropdown" aria-expanded="false"
@@ -160,7 +159,9 @@
 							style="color: #fdfdfd"> Comentario</a>
 							<ul class="dropdown-menu"
 								aria-labelledby="navbarDropdownMenuLink">
-								<li><a sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_TRABAJADOR')" class="dropdown-item" th:href="@{/ccomentario/new}">Registrar</a></li>
+								<li><a
+									sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_TRABAJADOR')"
+									class="dropdown-item" th:href="@{/ccomentario/new}">Registrar</a></li>
 								<li><a class="dropdown-item" th:href="@{/ccomentario/list}">Listar</a></li>
 							</ul></li>
 
@@ -184,9 +185,6 @@
 	<footer th:fragment="footer" class="container">
 		<p>EasyChamba</p>
 	</footer>
-
-
-
 
 </body>
 </html>

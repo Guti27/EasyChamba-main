@@ -18,8 +18,8 @@
 							<th>Postulante</th>
 							<th>Fecha inicio</th>
 							<th>Fecha Fin</th>
-							<th>Operacion</th>
-							<th>Operacion</th>
+							<th sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_EMPLEADOR')">Operacion</th>
+							<th sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_EMPLEADOR')">Operacion</th>
 
 
 

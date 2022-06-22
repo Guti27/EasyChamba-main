@@ -15,7 +15,9 @@
 						<tr>
 
 							<th>ID</th>
+							<th>ID Persona</th>
 							<th>Nombre</th>
+							<th>ID Tipo Trabajo</th>
 							<th>Tipo trabajo</th>
 							<th>Operacion</th>
 							<th>Operacion</th>
@@ -27,7 +29,9 @@
 					<tbody id="trabajadores-list">
 						<tr th:each="tra:${listaTrabajador}">
 							<td th:text="${tra.idTrabajador}"></td>
+							<td th:text="${tra.person.idPerson}"></td>
 							<td th:text="${tra.person.namePerson}"></td>
+							<td th:text="${tra.tipoTrabajo.idTipoTrabajo}"></td>
 							<td th:text="${tra.tipoTrabajo.rubro}"></td>
 
 							<td><a

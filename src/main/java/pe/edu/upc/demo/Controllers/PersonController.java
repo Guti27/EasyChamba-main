@@ -1,4 +1,4 @@
- package pe.edu.upc.demo.Controllers;
+package pe.edu.upc.demo.Controllers;
 
 import java.util.Map;
 import java.util.Optional;
@@ -40,7 +40,7 @@ public class PersonController {
 			personService.insert(pe);
 			model.addAttribute("mensaje", "Se guardó correctamente");
 			model.addAttribute("listaPersona", personService.list());
-			//status.setComplete();
+			// status.setComplete();
 			return "redirect:/ppersons/list";
 		}
 	}
@@ -81,9 +81,13 @@ public class PersonController {
 
 	// guardar los cambios
 	@PostMapping("/update")
-	public String updatePerson(Person p) {
-		personService.update(p);
-		return "redirect:/ppersons/list";
+	public String updatePerson(@Valid @ModelAttribute("pe") Person p, BindingResult binRes) {
+		if (binRes.hasErrors()) {
+			return "persona/frmActualiza";
+		} else {
+			personService.update(p);
+			return "redirect:/ppersons/list";
+		}
 	}
-	
+
 }
