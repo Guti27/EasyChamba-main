@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="master/master :: head">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<header th:replace="master/master :: header"></header>
+	<div class="container">
+		<div>
+			<div class="table-responsive">
+				<table class="table table-white">
+					<thead>
+						<tr>
+
+							<th scope="col">ID Tipo trabajo</th>
+							<th scope="col">Rubro</th>
+							<th scope="col">Cantidad trabajo</th>
+						</tr>
+					</thead>
+					<tbody id="cantidadTipoTrabajo-list">
+						<tr th:each="tra:${listaCantidadTipoTrabajo}">
+							<td th:text="${tra[0]}"></td>
+							<td th:text="${tra[1]}"></td>
+							<td th:text="${tra[2]}"></td>
+
+
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

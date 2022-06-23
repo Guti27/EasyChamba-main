@@ -45,4 +45,10 @@ public class AvisoTrabajoServiceImpl implements IAvisoTrabajoService {
 
 	}
 
+	@Override
+	public List<String[]> CantidadTipoTrabajo() {
+		
+		return avisoTrabajoRepository.CantidadTipoTrabajo();
+	}
+
 }

@@ -20,19 +20,18 @@ import javax.validation.constraints.Size;
 @Table(name = "users")
 public class Users implements Serializable {
 
-	
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Size(min = 4, max = 12)
+	@Size(min = 1, max = 30)
 	@NotEmpty(message = "Ingresa username")
 	@Column(length = 30, unique = true)
 	private String username;
 
-	@Size(min = 4, max = 20)
+	@Size(min = 1, max = 200)
 	@NotEmpty(message = "Ingresa password")
 	@Column(length = 200)
 	private String password;
@@ -42,11 +41,11 @@ public class Users implements Serializable {
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "user_id")
 	private List<Role> roles;
-	
+
 	public Users() {
 		super();
 		// TODO Auto-generated constructor stub
-	}	
+	}
 
 	public Users(Long id, String username, String password, Boolean enabled) {
 		super();
@@ -94,6 +93,6 @@ public class Users implements Serializable {
 
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
-	}	
+	}
 
 }

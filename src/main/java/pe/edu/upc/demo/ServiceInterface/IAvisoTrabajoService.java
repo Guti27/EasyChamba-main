@@ -16,4 +16,6 @@ public interface IAvisoTrabajoService {
 	Optional<AvisoTrabajo> listId(int idAvisoTrabajo);
 
 	public void update(AvisoTrabajo AvisoTrabajo);
+	
+	public List<String[]>CantidadTipoTrabajo();
 }
