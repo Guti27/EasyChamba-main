@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -24,12 +26,16 @@ public class Contrato {
 	@JoinColumn(name = "idTpostulante")
 	private Postulante postulante;
 
+	@NotNull(message = "La fecha es obligatoria")
+	@FutureOrPresent(message = "La fecha debe estar en el futuro")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@Column(name = "fechaInicio", nullable = false)
+	@Column(name = "fechaInicio")
 	private Date fechaInicio;
 
+	@NotNull(message = "La fecha es obligatoria")
+	@FutureOrPresent(message = "La fecha debe estar en el futuro")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@Column(name = "fechaFin", nullable = false)
+	@Column(name = "fechaFin")
 	private Date fechaFin;
 
 	public Contrato() {

@@ -27,11 +27,25 @@
 				<div class="col-sm-12">
 					<label class="form-label">Fecha Inicio:</label> <input type="date"
 						th:field="*{fechaInicio}" class="form-control"></input>
+					<div th:object="${c}" th:remove="tag">
+						<ul th:if="${#fields.hasErrors('fechaInicio')}"
+							class="alert alert-danger" role="alert">
+							<li th:each="error : ${#fields.errors('fechaInicio')}"
+								th:text="${error}"></li>
+						</ul>
+					</div>
 				</div>
 
 				<div class="col-sm-12">
 					<label class="form-label">Fecha Fin:</label> <input type="date"
 						th:field="*{fechaFin}" class="form-control"></input>
+					<div th:object="${c}" th:remove="tag">
+						<ul th:if="${#fields.hasErrors('fechaFin')}"
+							class="alert alert-danger" role="alert">
+							<li th:each="error : ${#fields.errors('fechaFin')}"
+								th:text="${error}"></li>
+						</ul>
+					</div>
 				</div>
 
 

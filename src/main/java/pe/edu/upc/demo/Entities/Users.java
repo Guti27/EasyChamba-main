@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
@@ -25,9 +27,13 @@ public class Users implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Size(min = 4, max = 12)
+	@NotEmpty(message = "Ingresa username")
 	@Column(length = 30, unique = true)
 	private String username;
 
+	@Size(min = 4, max = 20)
+	@NotEmpty(message = "Ingresa password")
 	@Column(length = 200)
 	private String password;
 

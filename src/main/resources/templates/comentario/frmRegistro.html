@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="master/master :: head">
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
@@ -32,7 +32,7 @@
 						th:field="*{empleador.idEmpleador}">
 
 						<option th:each="p:${listaEmpleador}" th:value="${p.idEmpleador}"
-							th:text="${p.idEmpleador}"
+							th:text="${p.person.dniPerson}"
 							th:selected="(${p.idEmpleador}==*{empleador.idEmpleador})"></option>
 
 					</select>
@@ -44,9 +44,17 @@
 						th:field="*{addComentario}" class="form-control"></input>
 				</div>
 
-				<div class="col-sm-12">
-					<label class="form-label">Calificacion:</label> <input type="text"
-						th:field="*{addCalificacion}" class="form-control"></input>
+				<div>
+					<label class="form-label">Calificacion:</label> <select
+						name="selectType" class="form-control"
+						th:field="*{addCalificacion}">
+						<option value="✰✰✰✰✰">✰✰✰✰✰</option>
+						<option value="✰✰✰✰">✰✰✰✰</option>
+						<option value="✰✰✰">✰✰✰</option>
+						<option value="✰✰">✰✰</option>
+						<option value="✰">✰</option>
+						
+					</select>
 				</div>
 
 				<div class="col-sm-12">

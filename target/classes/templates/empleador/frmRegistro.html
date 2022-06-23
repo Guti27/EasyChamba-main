@@ -18,7 +18,7 @@
 						th:field="*{person.idPerson}">
 
 						<option th:each="p:${listaPersonas}" th:value="${p.idPerson}"
-							th:text="${p.namePerson}"
+							th:text="${p.dniPerson}"
 							th:selected="(${p.idPerson}==*{person.idPerson})"></option>
 
 					</select>

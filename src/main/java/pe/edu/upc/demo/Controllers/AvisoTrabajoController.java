@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,12 +43,15 @@ public class AvisoTrabajoController {
 	}
 
 	@PostMapping("/save")
-	public String saveAvisoTrabajo(@Valid AvisoTrabajo at, BindingResult binRes, Model model) {
+	public String saveAvisoTrabajo(@Valid @ModelAttribute("at") AvisoTrabajo at, BindingResult binRes, Model model) {
 		if (binRes.hasErrors()) {
+			model.addAttribute("listaEmpleador", eService.list());
+			model.addAttribute("listaTipoTrabajo", tService.list());
 			return "avisoTrabajo/frmRegistro";
 		} else {
 			avisoTrabajoService.insert(at);
 			model.addAttribute("mensaje", "Se registró correctamente");
+			model.addAttribute("listaAvisoTrabajo", avisoTrabajoService.list());
 			return "redirect:/aavisoTrabajo/list";
 		}
 	}
@@ -87,9 +91,15 @@ public class AvisoTrabajoController {
 	}
 
 	@PostMapping("/update")
-	public String updateAvisoTrabajo(AvisoTrabajo at) {
-		avisoTrabajoService.update(at);
-		return "redirect:/aavisoTrabajo/list";
+	public String updateAvisoTrabajo(@Valid @ModelAttribute("at") AvisoTrabajo at, BindingResult binRes, Model model) {
+		if (binRes.hasErrors()) {
+			model.addAttribute("listaEmpleador", eService.list());
+			model.addAttribute("listaTipoTrabajo", tService.list());
+			return "avisoTrabajo/frmRegistro";
+		} else {
+			avisoTrabajoService.update(at);
+			return "redirect:/aavisoTrabajo/list";
+		}
 	}
 
 }

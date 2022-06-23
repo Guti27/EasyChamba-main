@@ -13,12 +13,12 @@
 			<form th:action="@{/ttrabajador/save}" method="post" th:object="${t}">
 
 				<div class="col-sm-12">
-					<label class="form-label">Nombre:</label> <select
+					<label class="form-label">DNI:</label> <select
 						name="selectPerson" class="form-control"
 						th:field="*{person.idPerson}">
 
 						<option th:each="p:${listaPersonas}" th:value="${p.idPerson}"
-							th:text="${p.namePerson}"
+							th:text="${p.dniPerson}"
 							th:selected="(${p.idPerson}==*{person.idPerson})"></option>
 
 					</select>

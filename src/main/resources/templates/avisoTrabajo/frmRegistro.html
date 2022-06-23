@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="master/master :: head">
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
@@ -22,8 +22,9 @@
 						<option th:each="p:${listaTipoTrabajo}"
 							th:value="${p.idTipoTrabajo}" th:text="${p.rubro}"
 							th:selected="(${p.idTipoTrabajo}==*{tipoTrabajo.idTipoTrabajo})"></option>
-
-					</select>
+					</select> <small th:errorclass="'form-control alert-danger'"
+						th:if="${#fields.hasErrors('tipoTrabajo.idTipoTrabajo')}"
+						th:errors="*{tipoTrabajo.idTipoTrabajo}"></small>
 
 				</div>
 
@@ -41,13 +42,16 @@
 				</div>
 
 				<div class="col-sm-12">
-					<label class="form-label">Fecha de nacimiento:</label> <input
+					<label class="form-label">Fecha de publicación:</label> <input
 						type="date" th:field="*{fechaPublicacion}" class="form-control"></input>
+					<div th:object="${at}" th:remove="tag">
+						<ul th:if="${#fields.hasErrors('fechaPublicacion')}"
+							class="alert alert-danger" role="alert">
+							<li th:each="error : ${#fields.errors('fechaPublicacion')}"
+								th:text="${error}"></li>
+						</ul>
+					</div>
 				</div>
-
-
-
-
 
 
 				<div class="col-sm-12">

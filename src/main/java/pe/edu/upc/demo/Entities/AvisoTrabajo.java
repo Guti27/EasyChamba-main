@@ -1,6 +1,7 @@
 package pe.edu.upc.demo.Entities;
 
 import java.util.Date;
+import java.util.Calendar;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -28,8 +34,10 @@ public class AvisoTrabajo {
 	@JoinColumn(name = "idempleador")
 	private Empleador empleador;
 
+	@NotNull(message = "La fecha es obligatoria")
+	@FutureOrPresent(message = "La fecha debe estar en el futuro")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@Column(name = "fechaPublicacion", nullable = false)
+	@Column(name = "fechaPublicacion")
 	private Date fechaPublicacion;
 
 	public AvisoTrabajo() {

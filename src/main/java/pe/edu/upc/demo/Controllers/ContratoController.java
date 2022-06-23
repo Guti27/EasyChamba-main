@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,8 +39,9 @@ public class ContratoController {
 	}
 
 	@PostMapping("/save")
-	public String saveContrato(@Valid Contrato c, BindingResult binRes, Model model) {
+	public String saveContrato(@Valid @ModelAttribute("c") Contrato c, BindingResult binRes, Model model) {
 		if (binRes.hasErrors()) {
+			model.addAttribute("listaPostulante", pService.list());
 			return "contrato/frmRegistro";
 		} else {
 			contratoService.insert(c);
@@ -81,9 +83,14 @@ public class ContratoController {
 	}
 
 	@PostMapping("/update")
-	public String updateContrato(Contrato c) {
-		contratoService.update(c);
-		return "redirect:/ccontrato/list";
+	public String updateContrato(@Valid @ModelAttribute("c") Contrato c, BindingResult binRes, Model model) {
+		if (binRes.hasErrors()) {
+			model.addAttribute("listaPostulante", pService.list());
+			return "contrato/frmRegistro";
+		} else {
+			contratoService.update(c);
+			return "redirect:/ccontrato/list";
+		}
 	}
 
 }

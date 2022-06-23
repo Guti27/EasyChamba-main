@@ -34,7 +34,7 @@
 							<td th:text="${tra.tipoTrabajo.rubro}"></td>
 							<td th:text="${tra.empleador.idEmpleador}"></td>
 							<td th:text="${tra.empleador.person.namePerson}"></td>
-							<td th:text="${tra.fechaPublicacion}"></td>
+							<td th:text="${#dates.format(tra.fechaPublicacion,'dd/MM/yyyy')}"></td>
 
 
 

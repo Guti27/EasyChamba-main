@@ -15,7 +15,8 @@
 
 				<div class="col-sm-12">
 					<label class="form-label">ID:</label> <input type="text"
-						th:field="*{idPostulante}" class="form-control"></input>
+						th:field="*{idPostulante}" class="form-control"
+						readonly="readonly"></input>
 				</div>
 
 				<div class="col-sm-12">
@@ -37,7 +38,7 @@
 						th:field="*{trabajador.idTrabajador}">
 
 						<option th:each="p:${listaTrabajador}"
-							th:value="${p.idTrabajador}" th:text="${p.idTrabajador}"
+							th:value="${p.idTrabajador}" th:text="${p.person.dniPerson}"
 							th:selected="(${p.idTrabajador}==*{trabajador.idTrabajador})"></option>
 
 					</select>

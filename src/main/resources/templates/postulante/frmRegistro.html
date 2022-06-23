@@ -31,7 +31,7 @@
 						th:field="*{trabajador.idTrabajador}">
 
 						<option th:each="p:${listaTrabajador}"
-							th:value="${p.idTrabajador}" th:text="${p.idTrabajador}"
+							th:value="${p.idTrabajador}" th:text="${p.person.dniPerson}"
 							th:selected="(${p.idTrabajador}==*{trabajador.idTrabajador})"></option>
 
 					</select>

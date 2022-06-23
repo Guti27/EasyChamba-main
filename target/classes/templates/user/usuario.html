@@ -19,10 +19,14 @@
 					<label for="username" class="col-sm-2 col-form-label">Username:
 					</label> <input type="text" th:field="*{username}" class="form-control" />
 				</div>
+				<small th:errorclass="'form-control alert-danger'"
+					th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></small>
 
-				<label for="password" class="col-sm-2 col-form-label">Password</label>
+				<label for="password" class="col-sm-2 col-form-label">Password:</label>
 				<div class="col-sm-12">
 					<input type="password" th:field="*{password}" class="form-control">
+					<small th:errorclass="'form-control alert-danger'"
+						th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></small>
 
 				</div>
 
