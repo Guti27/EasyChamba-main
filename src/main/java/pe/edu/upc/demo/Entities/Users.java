@@ -28,7 +28,7 @@ public class Users implements Serializable {
 
 	@Size(min = 1, max = 30)
 	@NotEmpty(message = "Ingresa username")
-	@Column(length = 30, unique = true)
+	@Column(length = 30)
 	private String username;
 
 	@Size(min = 1, max = 200)

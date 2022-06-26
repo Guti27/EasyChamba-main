@@ -18,9 +18,12 @@ public class UserServiceImpl implements IUserService {
 	private UserRepository tR;
 
 	@Override
-	public void insertar(Users u) {
-		// TODO Auto-generated method stub
+	public Integer insertar(Users u) {
+		int rpta = tR.findByName(u.getUsername());
+		if (rpta == 0) {
 		tR.save(u);
+		}
+		return rpta;
 	}
 
 	@Override

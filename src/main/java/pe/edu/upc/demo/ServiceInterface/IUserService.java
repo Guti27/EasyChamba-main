@@ -5,7 +5,7 @@ import java.util.List;
 import pe.edu.upc.demo.Entities.Users;
 
 public interface IUserService {
-	public void insertar(Users u);
+	public Integer insertar(Users u);
 
 	List<Users> listar();
 

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.support.SessionStatus;
 
 import pe.edu.upc.demo.Entities.Users;
 import pe.edu.upc.demo.ServiceInterface.IUserService;
@@ -33,8 +34,8 @@ public class UserController {
 	}
 
 	@PostMapping("/guardar")
-	public String registrarUser(@Valid @ModelAttribute("u") Users objTel, BindingResult binRes, Model model)
-			throws ParseException {
+	public String registrarUser(@Valid @ModelAttribute("u") Users objTel, BindingResult binRes, Model model,
+			SessionStatus status) throws ParseException {
 		if (binRes.hasErrors()) {
 			model.addAttribute("listaUsuarios", uService.listar());
 			return "user/usuario";
@@ -46,12 +47,21 @@ public class UserController {
 			us.setEnabled(objTel.getEnabled());
 			us.setPassword(pE);
 
-			uService.insertar(us);
-			model.addAttribute("mensaje", "Se guardó correctamente");
-			model.addAttribute("listaUsuarios", uService.listar());
-			// status.setComplete();
-			return "redirect:/usuarios/listar";
+			int rpta = uService.insertar(objTel);
+			if (rpta > 0) {
+				model.addAttribute("mensaje1", "Este usuario ya existe, por favor, ingrese otro.");
+				return "user/usuario";
+			} else {
+
+				// uService.insertar(us);
+				model.addAttribute("mensaje", "Se guardó correctamente");
+				model.addAttribute("listaUsuarios", uService.listar());
+				status.setComplete();
+			}
 		}
+		// model.addAttribute("listaUsuarios", uService.listar());
+		// return "user/usuario";
+		return "redirect:/usuarios/listar";
 	}
 
 	@GetMapping("/listar")
