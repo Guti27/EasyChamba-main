@@ -52,7 +52,8 @@
 
 				<div class="col-sm-12">
 					<label class="form-label">Fecha de nacimiento:</label> <input
-						type="date" th:field="*{birthDatePerson}" class="form-control"></input>
+						type="date" th:field="*{birthDatePerson}" min="1930-01-01"
+						max="2004-06-29" class="form-control"></input>
 					<div th:object="${p}" th:remove="tag">
 						<ul th:if="${#fields.hasErrors('birthDatePerson')}"
 							class="alert alert-danger" role="alert">

@@ -4,7 +4,14 @@
 <head th:replace="master/master :: head">
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
+<style>
+#selector {
+	color: goldenrod;
+}
+</style>
 <body>
 
 	<header th:replace="master/master :: header"></header>
@@ -47,13 +54,13 @@
 				<div>
 					<label class="form-label">Calificacion:</label> <select
 						name="selectType" class="form-control"
-						th:field="*{addCalificacion}">
+						th:field="*{addCalificacion}" id="selector">
 						<option value="✰✰✰✰✰">✰✰✰✰✰</option>
 						<option value="✰✰✰✰">✰✰✰✰</option>
 						<option value="✰✰✰">✰✰✰</option>
 						<option value="✰✰">✰✰</option>
 						<option value="✰">✰</option>
-						
+
 					</select>
 				</div>
 
