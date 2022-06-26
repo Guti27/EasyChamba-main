@@ -17,8 +17,9 @@
 			<form th:action="@{/usuarios/guardar}" th:object="${u}" method="post">
 				<div class="col-sm-12">
 					<label for="username" class="col-sm-2 col-form-label">Username:
-					</label> <input type="text" th:field="*{username}" class="form-control" />
-					<small th:errorclass="'form-control alert-danger'"
+					</label> <input type="text" th:field="*{username}" class="form-control"
+						placeholder="Ingresar usuario" /> <small
+						th:errorclass="'form-control alert-danger'"
 						th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></small>
 				</div>
 				<div th:if="${mensaje1}" class="alert alert-danger">
@@ -27,8 +28,9 @@
 
 				<label for="password" class="col-sm-2 col-form-label">Password:</label>
 				<div class="col-sm-12">
-					<input type="password" th:field="*{password}" class="form-control">
-					<small th:errorclass="'form-control alert-danger'"
+					<input type="password" th:field="*{password}" class="form-control"
+						placeholder="Ingresar contraseña"> <small
+						th:errorclass="'form-control alert-danger'"
 						th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></small>
 
 				</div>

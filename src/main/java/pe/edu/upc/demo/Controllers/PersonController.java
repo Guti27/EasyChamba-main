@@ -97,11 +97,24 @@ public class PersonController {
 
 	// guardar los cambios
 	@PostMapping("/update")
-	public String updatePerson(@Valid @ModelAttribute("pe") Person p, BindingResult binRes) {
+	public String updatePerson(@Valid @ModelAttribute("pe") Person p, BindingResult binRes, Model model) {
 		if (binRes.hasErrors()) {
 			return "persona/frmActualiza";
 		} else {
-			personService.update(p);
+			/*int rpta = personService.insert(p);
+			int rpta2 = personService.insert2(p);
+			if (rpta > 0) {
+				model.addAttribute("mensaje", "Este DNI ya ha sido registrado, por favor, ingrese otro.");
+				return "persona/frmActualiza";
+			}
+			if (rpta2 > 0) {
+				model.addAttribute("mensaje1", "Este correo ya ha sido registrado, por favor, ingrese otro.");
+				return "persona/frmActualiza";
+			}
+
+			else {*/
+				personService.update(p);
+			//}
 			return "redirect:/ppersons/list";
 		}
 	}

@@ -9,21 +9,27 @@
 
 	<header th:replace="master/master :: header"></header>
 	<div class="container">
+		<hr style="background-color: #fdfdfd" />
+		<div
+			style="font-family: 'Roboto Condensed', sans-serif; font-size: 150%;">Actualizar
+			contrato</div>
+		<hr style="background-color: #FA251B" />
 		<div>
 			<form th:action="@{/ccontrato/update}" method="post" th:object="${c}">
 
 				<div class="col-sm-12">
 					<label class="form-label">ID:</label> <input type="text"
-						th:field="*{idContrato}" class="form-control"></input>
+						th:field="*{idContrato}" class="form-control" readonly="readonly"></input>
 				</div>
 
 				<div class="col-sm-12">
-					<label class="form-label">Postulante</label> <select
+					<label class="form-label">DNI postulante:</label> <select
 						name="selectPostulante" class="form-control"
 						th:field="*{postulante.idPostulante}">
 
 						<option th:each="c:${listaPostulante}"
-							th:value="${c.idPostulante}" th:text="${c.idPostulante}"
+							th:value="${c.idPostulante}"
+							th:text="${c.trabajador.person.dniPerson}"
 							th:selected="(${c.idPostulante}==*{postulante.idPostulante})"></option>
 
 					</select>
@@ -42,7 +48,7 @@
 
 
 				<div class="col-sm-12">
-					<input type="submit" value="Actualiza" class="btn btn-dark"></input>
+					<input type="submit" value="Actualizar" class="btn btn-dark"></input>
 				</div>
 
 

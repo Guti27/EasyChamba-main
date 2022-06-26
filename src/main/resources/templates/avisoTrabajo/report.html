@@ -8,6 +8,11 @@
 <body>
 	<header th:replace="master/master :: header"></header>
 	<div class="container">
+		<hr style="background-color: #fdfdfd" />
+		<div
+			style="font-family: 'Roboto Condensed', sans-serif; font-size: 150%;">Cantidad
+			de avisos de trabajos de acuerdo a su rubro</div>
+		<hr style="background-color: #FA251B" />
 		<div>
 			<div class="table-responsive">
 				<table class="table table-white">
@@ -16,7 +21,7 @@
 
 							<th scope="col">ID Tipo trabajo</th>
 							<th scope="col">Rubro</th>
-							<th scope="col">Cantidad trabajo</th>
+							<th scope="col">Cantidad de avisos de trabajo</th>
 						</tr>
 					</thead>
 					<tbody id="cantidadTipoTrabajo-list">

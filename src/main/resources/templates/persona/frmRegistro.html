@@ -2,20 +2,26 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="master/master :: head">
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 
 	<header th:replace="master/master :: header"></header>
 	<div class="container">
+		<hr style="background-color: #fdfdfd" />
+		<div
+			style="font-family: 'Roboto Condensed', sans-serif; font-size: 150%;">Registro
+			de persona</div>
+		<hr style="background-color: #FA251B" />
 		<div>
 			<form th:action="@{/ppersons/save}" method="post" th:object="${p}">
 
 				<div class="col-sm-12">
 					<label class="form-label">DNI:</label> <input type="text"
-						maxlength="8" th:field="*{dniPerson}" class="form-control"></input>
-					<small th:errorclass="'form-control alert-danger'"
+						maxlength="8" th:field="*{dniPerson}" class="form-control"
+						placeholder="Ingrese su DNI"></input> <small
+						th:errorclass="'form-control alert-danger'"
 						th:if="${#fields.hasErrors('dniPerson')}" th:errors="*{dniPerson}"></small>
 				</div>
 				<div th:if="${mensaje}" class="alert alert-danger">
@@ -24,7 +30,8 @@
 
 				<div class="col-sm-12">
 					<label class="form-label">Nombres:</label> <input type="text"
-						th:field="*{namePerson}" class="form-control"></input> <small
+						th:field="*{namePerson}" class="form-control"
+						placeholder="Ingrese su nombre"></input> <small
 						th:errorclass="'form-control alert-danger'"
 						th:if="${#fields.hasErrors('namePerson')}"
 						th:errors="*{namePerson}"></small>
@@ -32,7 +39,8 @@
 
 				<div class="col-sm-12">
 					<label class="form-label">Apellidos:</label> <input type="text"
-						th:field="*{lastNamePerson}" class="form-control"></input> <small
+						th:field="*{lastNamePerson}" class="form-control"
+						placeholder="Ingrese su apellido"></input> <small
 						th:errorclass="'form-control alert-danger'"
 						th:if="${#fields.hasErrors('lastNamePerson')}"
 						th:errors="*{lastNamePerson}"></small>
@@ -41,7 +49,7 @@
 				<div class="col-sm-12">
 					<label class="form-label">Correo:</label> <input type="email"
 						pattern=".+@[a-zA-Z0-9.-]+[.]+(.+)" th:field="*{emailPerson}"
-						class="form-control"></input> <small
+						class="form-control" placeholder="Ingrese su correo"></input> <small
 						th:errorclass="'form-control alert-danger'"
 						th:if="${#fields.hasErrors('emailPerson')}"
 						th:errors="*{emailPerson}"></small>
@@ -65,8 +73,9 @@
 
 				<div class="col-sm-12">
 					<label class="form-label">Telefono:</label> <input type="text"
-						maxlength="9" th:field="*{phonePerson}" class="form-control"></input>
-					<small th:errorclass="'form-control alert-danger'"
+						maxlength="9" th:field="*{phonePerson}" class="form-control"
+						placeholder="Ingrese su teléfono"></input> <small
+						th:errorclass="'form-control alert-danger'"
 						th:if="${#fields.hasErrors('phonePerson')}"
 						th:errors="*{phonePerson}"></small>
 				</div>

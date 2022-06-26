@@ -16,6 +16,11 @@
 
 	<header th:replace="master/master :: header"></header>
 	<div class="container">
+		<hr style="background-color: #fdfdfd" />
+		<div
+			style="font-family: 'Roboto Condensed', sans-serif; font-size: 150%;">Escribir
+			un comentario</div>
+		<hr style="background-color: #FA251B" />
 		<div>
 			<form th:action="@{/ccomentario/save}" method="post" th:object="${c}">
 
@@ -48,11 +53,12 @@
 
 				<div class="col-sm-12">
 					<label class="form-label">Comentario:</label> <input type="text"
-						th:field="*{addComentario}" class="form-control"></input>
+						th:field="*{addComentario}" class="form-control"
+						placeholder="Déjenos su opinión"></input>
 				</div>
 
 				<div>
-					<label class="form-label">Calificacion:</label> <select
+					<label class="form-label">Calificación:</label> <select
 						name="selectType" class="form-control"
 						th:field="*{addCalificacion}" id="selector">
 						<option value="✰✰✰✰✰">✰✰✰✰✰</option>
@@ -65,7 +71,7 @@
 				</div>
 
 				<div class="col-sm-12">
-					<input type="submit" value="Registrar" class="btn btn-dark"></input>
+					<input type="submit" value="Enviar" class="btn btn-dark"></input>
 				</div>
 
 
