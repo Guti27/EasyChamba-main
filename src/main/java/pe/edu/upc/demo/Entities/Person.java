@@ -14,6 +14,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -25,46 +26,50 @@ public class Person {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idPerson;
-	
-	@Size(min = 8, max = 8)
+
+	@Size(min = 8, max = 8, message = "El tamaño debe ser de 8 dígitos")
 	@NotEmpty(message = "Ingresa DNI")
 	@Column(name = "dniPerson", length = 8, nullable = false)
+	@Pattern(regexp = "^[0-9]*$", message = "Solo debe ingresar números")
 	private String dniPerson;
 
 	@NotNull(message = "Capo Vacio")
 	@NotEmpty(message = "Ingresa el nombre")
 	@Size(min = 4, message = "Nombre incompleto")
 	@Column(name = "namePerson", length = 48, nullable = false)
+	@Pattern(regexp = "^[A-Za-z]*$", message = "Debe ingresar datos alfabéticos")
 	private String namePerson;
-	
+
 	@NotNull(message = "Capo Vacio")
 	@NotEmpty(message = "Ingresa el apellido")
 	@Size(min = 4, message = "Apellido incompleto")
 	@Column(name = "lastNamePerson", length = 48, nullable = false)
+	@Pattern(regexp = "^[A-Za-z]*$", message = "Debe ingresar datos alfabéticos")
 	private String lastNamePerson;
-	
-	@NotEmpty(message = "Ingresa Email")
+
+	@NotEmpty(message = "Ingresa tu email")
 	@Email
 	@Column(name = "emailPerson", length = 35, nullable = false)
 	private String emailPerson;
 
-	@NotNull
+	@NotNull(message = "Indique su fecha de nacimiento")
 	@Past(message = "La fecha debe estar en el pasado")
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "birthDatePerson", nullable = false)
 	private Date birthDatePerson;
 
-	@Size(min = 9, max = 9)
-	@NotEmpty(message = "Ingresa Telefono")
+	@Size(min = 9, max = 9, message = "El tamaño debe ser de 9 dígitos")
+	@NotEmpty(message = "Ingresa tu teléfono")
 	@Column(name = "phonePerson", length = 9, nullable = false)
-	private String phonePerson;	
+	@Pattern(regexp = "^[0-9]*$", message = "Solo debe ingresar números")
+	private String phonePerson;
 
 	public Person() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public Person(int idPerson, String dniPerson, String namePerson, String lastNamePerson, String emailPerson,
 			Date birthDatePerson, String phonePerson) {
 		super();
@@ -131,6 +136,6 @@ public class Person {
 
 	public void setPhonePerson(String phonePerson) {
 		this.phonePerson = phonePerson;
-	}	
+	}
 
 }

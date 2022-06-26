@@ -11,14 +11,27 @@ import pe.edu.upc.demo.Repositories.IPersonRepository;
 import pe.edu.upc.demo.ServiceInterface.IPersonService;
 
 @Service
-public class PersonServiceImpl implements IPersonService{
-	
+public class PersonServiceImpl implements IPersonService {
+
 	@Autowired
 	private IPersonRepository personRepository;
+	int rpta = 0;
+	int rpta2 = 0;
 
 	@Override
-	public void insert(Person person) {
-		// TODO Auto-generated method stub
+	public Integer insert(Person person) {
+		rpta = personRepository.findByDNI(person.getDniPerson());
+		return rpta;
+	}
+
+	@Override
+	public Integer insert2(Person person) {
+		rpta2 = personRepository.findByEmail(person.getEmailPerson());
+		return rpta2;
+	}
+
+	@Override
+	public void insert3(Person person) {
 		personRepository.save(person);
 	}
 

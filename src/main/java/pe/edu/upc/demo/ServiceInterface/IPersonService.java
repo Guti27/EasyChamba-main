@@ -7,7 +7,11 @@ import pe.edu.upc.demo.Entities.Person;
 
 public interface IPersonService {
 	
-	public void insert(Person person);
+	public Integer insert(Person person);
+	
+	public Integer insert2(Person person);
+	
+	public void insert3(Person person);
 	
 	public List<Person> list();
 	

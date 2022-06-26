@@ -18,6 +18,9 @@
 					<small th:errorclass="'form-control alert-danger'"
 						th:if="${#fields.hasErrors('dniPerson')}" th:errors="*{dniPerson}"></small>
 				</div>
+				<div th:if="${mensaje}" class="alert alert-danger">
+					<p th:text="${mensaje}"></p>
+				</div>
 
 				<div class="col-sm-12">
 					<label class="form-label">Nombres:</label> <input type="text"
@@ -43,14 +46,18 @@
 						th:if="${#fields.hasErrors('emailPerson')}"
 						th:errors="*{emailPerson}"></small>
 				</div>
+				<div th:if="${mensaje1}" class="alert alert-danger">
+					<p th:text="${mensaje1}"></p>
+				</div>
 
 				<div class="col-sm-12">
 					<label class="form-label">Fecha de nacimiento:</label> <input
 						type="date" th:field="*{birthDatePerson}" class="form-control"></input>
-						<div th:object="${p}" th:remove="tag">
-						<ul th:if="${#fields.hasErrors('birthDatePerson')}" class="alert alert-danger"
-							role="alert">
-							<li th:each="error : ${#fields.errors('birthDatePerson')}" th:text="${error}"></li>
+					<div th:object="${p}" th:remove="tag">
+						<ul th:if="${#fields.hasErrors('birthDatePerson')}"
+							class="alert alert-danger" role="alert">
+							<li th:each="error : ${#fields.errors('birthDatePerson')}"
+								th:text="${error}"></li>
 						</ul>
 					</div>
 				</div>

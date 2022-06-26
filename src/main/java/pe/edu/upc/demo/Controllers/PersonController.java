@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.support.SessionStatus;
 
 import pe.edu.upc.demo.Entities.Person;
 import pe.edu.upc.demo.ServiceInterface.IPersonService;
@@ -33,14 +34,29 @@ public class PersonController {
 	}
 
 	@PostMapping("/save")
-	public String savePerson(@Valid @ModelAttribute("p") Person pe, BindingResult binRes, Model model) {
+	public String savePerson(@Valid @ModelAttribute("p") Person pe, BindingResult binRes, Model model,
+			SessionStatus status) {
 		if (binRes.hasErrors()) {
 			return "persona/frmRegistro";
 		} else {
-			personService.insert(pe);
-			model.addAttribute("mensaje", "Se guardó correctamente");
-			model.addAttribute("listaPersona", personService.list());
-			// status.setComplete();
+			int rpta = personService.insert(pe);
+			int rpta2 = personService.insert2(pe);
+			if (rpta > 0) {
+				model.addAttribute("mensaje", "Este DNI ya ha sido registrado, por favor, ingrese otro.");
+				return "persona/frmRegistro";
+			}
+			if (rpta2 > 0) {
+				model.addAttribute("mensaje1", "Este correo ya ha sido registrado, por favor, ingrese otro.");
+				return "persona/frmRegistro";
+			}
+
+			else {
+
+				personService.insert3(pe);
+				model.addAttribute("mensaje", "Se guardó correctamente");
+				model.addAttribute("listaPersona", personService.list());
+				status.setComplete();
+			}
 			return "redirect:/ppersons/list";
 		}
 	}
