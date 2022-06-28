@@ -33,33 +33,26 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
 	@Transactional
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 
-		/*Users user = new Users();
-		user.setId((long) 1);
-		user.setUsername("admin");
-		user.setPassword("123");
-		user.setPassword(passwordEncoder.encode("123"));
-		//user.setRoles(roleRepository.findByRol("ROLE_ADMIN"));
-		//user.setRoles(roleRepository.findByName("ROLE_ADMIN"));
-		user.setEnabled(true);
-		userRepository.save(user);
-		
-		//Users user2 = new Users();
-		//user2.setUsername("user");
-		//user2.setPassword("123");
-		//user2.setPassword(passwordEncoder.encode("123"));
-		//user2.setRoles(roleRepository.findByRol("ROLE_USER"));
-		//user2.setEnabled(true);
-		//userRepository.save(user2);
-		
-		Role rol = new Role();
-		rol.setRol("ROLE_ADMIN");
-		rol.setUser(user);
-		roleRepository.save(rol);
-		
-		//Role rol2 = new Role();
-		//rol2.setRol("ROLE_USER");
-		//roleRepository.save(rol2);
-
-		alreadySetup = true;*/
+		/*
+		 * Users user = new Users(); user.setId((long) 1); user.setUsername("admin");
+		 * user.setPassword("123"); user.setPassword(passwordEncoder.encode("123"));
+		 * //user.setRoles(roleRepository.findByRol("ROLE_ADMIN"));
+		 * //user.setRoles(roleRepository.findByName("ROLE_ADMIN"));
+		 * user.setEnabled(true); userRepository.save(user);
+		 * 
+		 * //Users user2 = new Users(); //user2.setUsername("user");
+		 * //user2.setPassword("123");
+		 * //user2.setPassword(passwordEncoder.encode("123"));
+		 * //user2.setRoles(roleRepository.findByRol("ROLE_USER"));
+		 * //user2.setEnabled(true); //userRepository.save(user2);
+		 * 
+		 * Role rol = new Role(); rol.setRol("ROLE_ADMIN"); rol.setUser(user);
+		 * roleRepository.save(rol);
+		 * 
+		 * //Role rol2 = new Role(); //rol2.setRol("ROLE_USER");
+		 * //roleRepository.save(rol2);
+		 * 
+		 * alreadySetup = true;
+		 */
 	}
 }

@@ -58,6 +58,15 @@
 					</div>
 				</div>
 
+				<div class="col-sm-12">
+					<label class="form-label">Descripcion:</label> <input type="text"
+						th:field="*{descripcionTrabajo}" class="form-control"
+						placeholder="Ingrese la descripcion de trabajo"></input> <small
+						th:errorclass="'form-control alert-danger'"
+						th:if="${#fields.hasErrors('descripcionTrabajo')}"
+						th:errors="*{descripcionTrabajo}"></small>
+				</div>
+
 
 				<div class="col-sm-12">
 					<input type="submit" value="Registrar" class="btn btn-dark"></input>

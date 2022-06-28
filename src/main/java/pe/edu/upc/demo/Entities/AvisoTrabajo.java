@@ -15,7 +15,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -40,17 +42,26 @@ public class AvisoTrabajo {
 	@Column(name = "fechaPublicacion")
 	private Date fechaPublicacion;
 
+	@NotNull(message = "Capo Vacio")
+	@NotEmpty(message = "Ingresa la descripcion")
+	@Size(min = 3, message = "Descripcion incompleta")
+	@Column(name = "descripcionTrabajo", length = 50, nullable = false)
+	private String descripcionTrabajo;
+
 	public AvisoTrabajo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public AvisoTrabajo(int idAvisoTrabajo, TipoTrabajo tipoTrabajo, Empleador empleador, Date fechaPublicacion) {
+	public AvisoTrabajo(int idAvisoTrabajo, TipoTrabajo tipoTrabajo, Empleador empleador,
+			@NotNull(message = "La fecha es obligatoria") @FutureOrPresent(message = "La fecha debe estar en el futuro") Date fechaPublicacion,
+			@NotNull(message = "Capo Vacio") @NotEmpty(message = "Ingresa la descripcion") @Size(min = 3, message = "Descripcion incompleta") String descripcionTrabajo) {
 		super();
 		this.idAvisoTrabajo = idAvisoTrabajo;
 		this.tipoTrabajo = tipoTrabajo;
 		this.empleador = empleador;
 		this.fechaPublicacion = fechaPublicacion;
+		this.descripcionTrabajo = descripcionTrabajo;
 	}
 
 	public int getIdAvisoTrabajo() {
@@ -83,6 +94,14 @@ public class AvisoTrabajo {
 
 	public void setFechaPublicacion(Date fechaPublicacion) {
 		this.fechaPublicacion = fechaPublicacion;
+	}
+
+	public String getDescripcionTrabajo() {
+		return descripcionTrabajo;
+	}
+
+	public void setDescripcionTrabajo(String descripcionTrabajo) {
+		this.descripcionTrabajo = descripcionTrabajo;
 	}
 
 }

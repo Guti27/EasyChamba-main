@@ -24,6 +24,8 @@
 							<th>Nombre postulante</th>
 							<th>Fecha inicio</th>
 							<th>Fecha Fin</th>
+							<th>Sueldo</th>
+
 							<th
 								sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_EMPLEADOR')">Operación</th>
 							<th
@@ -40,6 +42,8 @@
 							<td th:text="${c.postulante.trabajador.person.namePerson}"></td>
 							<td th:text="${#dates.format(c.fechaInicio,'dd/MM/yyyy')}"></td>
 							<td th:text="${#dates.format(c.fechaFin,'dd/MM/yyyy')}"></td>
+							<td th:text="${c.sueldo}"></td>
+
 
 							<td><a
 								sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_EMPLEADOR')"

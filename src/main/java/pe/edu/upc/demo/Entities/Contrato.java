@@ -11,7 +11,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -38,17 +41,25 @@ public class Contrato {
 	@Column(name = "fechaFin")
 	private Date fechaFin;
 
+	@NotNull(message = "El sueldo es obligatorio")
+	@Column(name = "sueldo", length = 9, nullable = false)
+	private double sueldo;
+
 	public Contrato() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Contrato(int idContrato, Postulante postulante, Date fechaInicio, Date fechaFin) {
+	public Contrato(int idContrato, Postulante postulante,
+			@NotNull(message = "La fecha es obligatoria") @FutureOrPresent(message = "La fecha debe estar en el futuro") Date fechaInicio,
+			@NotNull(message = "La fecha es obligatoria") @FutureOrPresent(message = "La fecha debe estar en el futuro") Date fechaFin,
+			@NotNull(message = "El sueldo es obligatorio") double sueldo) {
 		super();
 		this.idContrato = idContrato;
 		this.postulante = postulante;
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
+		this.sueldo = sueldo;
 	}
 
 	public int getIdContrato() {
@@ -81,6 +92,14 @@ public class Contrato {
 
 	public void setFechaFin(Date fechaFin) {
 		this.fechaFin = fechaFin;
+	}
+
+	public double getSueldo() {
+		return sueldo;
+	}
+
+	public void setSueldo(double sueldo) {
+		this.sueldo = sueldo;
 	}
 
 }
