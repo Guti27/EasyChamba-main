@@ -51,10 +51,13 @@
 
 				</div>
 
-				<div class="col-sm-12">
-					<label class="form-label">Comentario:</label> <input type="text"
-						th:field="*{addComentario}" class="form-control"
-						placeholder="Déjenos su opinión"></input>
+
+				<div>
+					<label class="form-label">Comentario:</label> <select
+						name="selectType" class="form-control" th:field="*{addComentario}">
+						<option value="Recomendado">Recomendado</option>
+						<option value="No recomendado">No recomendado</option>
+					</select>
 				</div>
 
 				<div>
