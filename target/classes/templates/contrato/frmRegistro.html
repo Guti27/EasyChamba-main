@@ -55,11 +55,12 @@
 				</div>
 
 				<div class="col-sm-12">
-					<label class="form-label">Sueldo:</label> <input type="text"
+					<label class="form-label">Sueldo:</label> <input type="number"
 						maxlength="9" th:field="*{sueldo}" class="form-control"
-						placeholder="Ingrese el sueldo"></input> <small
-						th:errorclass="'form-control alert-danger'"
-						th:if="${#fields.hasErrors('sueldo')}" th:errors="*{sueldo}"></small>
+						placeholder="Ingrese el sueldo"></input>
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('sueldo')}"
+						th:errors="*{sueldo}"></div>
 				</div>
 
 

@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -42,8 +44,10 @@ public class Contrato {
 	private Date fechaFin;
 
 	@NotNull(message = "El sueldo es obligatorio")
-	@Column(name = "sueldo", length = 9, nullable = false)
-	private double sueldo;
+	@Column(name = "sueldo")
+	@DecimalMax("6000.00")
+	@DecimalMin("1025.00")
+	private Double sueldo;
 
 	public Contrato() {
 		super();
@@ -53,7 +57,7 @@ public class Contrato {
 	public Contrato(int idContrato, Postulante postulante,
 			@NotNull(message = "La fecha es obligatoria") @FutureOrPresent(message = "La fecha debe estar en el futuro") Date fechaInicio,
 			@NotNull(message = "La fecha es obligatoria") @FutureOrPresent(message = "La fecha debe estar en el futuro") Date fechaFin,
-			@NotNull(message = "El sueldo es obligatorio") double sueldo) {
+			@NotNull(message = "El sueldo es obligatorio") Double sueldo) {
 		super();
 		this.idContrato = idContrato;
 		this.postulante = postulante;
@@ -94,11 +98,11 @@ public class Contrato {
 		this.fechaFin = fechaFin;
 	}
 
-	public double getSueldo() {
+	public Double getSueldo() {
 		return sueldo;
 	}
 
-	public void setSueldo(double sueldo) {
+	public void setSueldo(Double sueldo) {
 		this.sueldo = sueldo;
 	}
 
