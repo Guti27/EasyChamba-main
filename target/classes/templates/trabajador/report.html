@@ -35,6 +35,63 @@
 					</tbody>
 				</table>
 			</div>
+
+			<div class="js">
+				<div>
+					<canvas id="myChart"></canvas>
+				</div>
+				<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+				<script th:inline="javascript">
+						/*<![CDATA[*/
+						
+						    var arr = /*[[${listaCantidadTrabajadorepoRubro}]]*/ '';
+						    let labels = [];
+						    let values = [];
+						   
+						    arr.forEach(
+								el => { labels.push(el[1]); values.push(+el[2]); }
+									   );
+							 console.log(labels, values);						
+						/*]]>*/
+
+						
+						  const data = {
+							label: 'cantidad de trabajadores de un tipo trabajo',
+						    labels: labels,
+						    datasets: [{barThickness: 50,
+						        maxBarThickness: 60,
+						      backgroundColor:  [
+						    	  'rgb(255,99,71)',
+                                  'rgb(218,165,32)',
+                                  'rgb(0,255,0)',
+                                  'rgb(102,205,170)',
+                                  'rgb(60,179,113)',
+                                  'rgb(32,178,170)'
+						        ],
+						      borderColor:  [
+						    	  'rgb(255,99,71)',
+                                  'rgb(218,165,32)',
+                                  'rgb(0,255,0)',
+                                  'rgb(102,205,170)',
+                                  'rgb(60,179,113)',
+                                  'rgb(32,178,170)'
+						        ],
+						      data: values,
+						    }]
+						  };
+						
+						  const config = {
+						    type: 'bar',
+						    data: data,
+						    options: {}
+						  };
+
+						  const myChart = new Chart(
+								    document.getElementById('myChart'),
+								    config
+								  );
+						</script>
+			</div>
 		</div>
 	</div>
 </body>
