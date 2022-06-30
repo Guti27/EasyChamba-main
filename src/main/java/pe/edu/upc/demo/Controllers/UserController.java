@@ -36,7 +36,7 @@ public class UserController {
 	@PostMapping("/guardar")
 	public String registrarUser(@Valid @ModelAttribute("u") Users objTel, BindingResult binRes, Model model,
 			SessionStatus status) throws ParseException {
-		if (binRes.hasErrors()) {
+		/*if (binRes.hasErrors()) {
 			model.addAttribute("listaUsuarios", uService.listar());
 			return "user/usuario";
 		} else {
@@ -61,7 +61,22 @@ public class UserController {
 		}
 		// model.addAttribute("listaUsuarios", uService.listar());
 		// return "user/usuario";
-		return "redirect:/usuarios/listar";
+		return "redirect:/usuarios/listar";*/
+		if (binRes.hasErrors()) {
+            return "user/usuario";
+        } else {
+            String p = objTel.getPassword();
+            String pE = passwordEncoder.encode(p);
+            Users us = new Users();
+            us.setUsername(objTel.getUsername());
+            us.setEnabled(objTel.getEnabled());
+            us.setPassword(pE);
+
+            uService.insertar(us);
+            model.addAttribute("mensaje", "Se guardó correctamente");
+            // status.setComplete();
+            return "redirect:/usuarios/listar";
+        }
 	}
 
 	@GetMapping("/listar")

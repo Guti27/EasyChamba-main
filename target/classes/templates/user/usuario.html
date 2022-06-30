@@ -29,9 +29,7 @@
 				<label for="password" class="col-sm-2 col-form-label">Password:</label>
 				<div class="col-sm-12">
 					<input type="password" th:field="*{password}" class="form-control"
-						placeholder="Ingresar contraseña"> <small
-						th:errorclass="'form-control alert-danger'"
-						th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></small>
+						placeholder="Ingresar contraseña">
 
 				</div>
 
