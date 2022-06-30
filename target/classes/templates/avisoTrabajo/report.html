@@ -14,6 +14,7 @@
 			de avisos de trabajos de acuerdo a su rubro</div>
 		<hr style="background-color: #FA251B" />
 		<div>
+					
 			<div class="table-responsive">
 				<table class="table table-white">
 					<thead>
@@ -25,6 +26,7 @@
 						</tr>
 					</thead>
 					<tbody id="cantidadTipoTrabajo-list">
+
 						<tr th:each="tra:${listaCantidadTipoTrabajo}">
 							<td th:text="${tra[0]}"></td>
 							<td th:text="${tra[1]}"></td>
@@ -35,6 +37,47 @@
 					</tbody>
 				</table>
 			</div>
+			<div class="js">
+			<div>
+			  <canvas id="myChart"></canvas>
+			</div>
+						<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+						<script th:inline="javascript">
+						/*<![CDATA[*/
+						
+						    var arr = /*[[${listaCantidadTipoTrabajo}]]*/ '';
+						    let labels = [];
+						    let values = [];
+						   
+						    arr.forEach(
+								el => { labels.push(el[1]); values.push(+el[2]); }
+									   );
+							 console.log(labels, values);						
+						/*]]>*/
+
+						
+						  const data = {
+							label: 'Cantidades de Avisos de Trabajo',
+						    labels: labels,
+						    datasets: [{
+						      backgroundColor: 'rgb(255, 99, 132)',
+						      borderColor: 'rgb(255, 99, 132)',
+						      data: values,
+						    }]
+						  };
+						
+						  const config = {
+						    type: 'bar',
+						    data: data,
+						    options: {}
+						  };
+
+						  const myChart = new Chart(
+								    document.getElementById('myChart'),
+								    config
+								  );
+						</script>
+			</div>	
 		</div>
 	</div>
 </body>
