@@ -37,12 +37,14 @@
 
 				<div class="col-sm-12">
 					<label class="form-label">Fecha Inicio:</label> <input type="date"
-						th:field="*{fechaInicio}" class="form-control"></input>
+						th:field="*{fechaInicio}" min="2022-07-01" max="2030-07-01"
+						class="form-control"></input>
 				</div>
 
 				<div class="col-sm-12">
 					<label class="form-label">Fecha Fin:</label> <input type="date"
-						th:field="*{fechaFin}" class="form-control"></input>
+						th:field="*{fechaFin}" min="2022-08-01" max="2030-07-01"
+						class="form-control"></input>
 				</div>
 
 				<div class="col-sm-12">
@@ -56,7 +58,8 @@
 
 
 				<div class="col-sm-12">
-					<input type="submit" value="Actualizar" class="btn btn-dark"></input>
+					<input type="submit" value="Actualizar" class="btn btn-dark"></input><a
+						href="/ccontrato/list" class="btn btn-danger"><span>Cancelar</span></a>
 				</div>
 
 

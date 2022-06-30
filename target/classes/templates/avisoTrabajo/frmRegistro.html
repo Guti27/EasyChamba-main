@@ -48,7 +48,8 @@
 
 				<div class="col-sm-12">
 					<label class="form-label">Fecha de publicación:</label> <input
-						type="date" th:field="*{fechaPublicacion}" class="form-control"></input>
+						type="date" th:field="*{fechaPublicacion}" min="2022-07-01"
+						max="2030-07-01" class="form-control"></input>
 					<div th:object="${at}" th:remove="tag">
 						<ul th:if="${#fields.hasErrors('fechaPublicacion')}"
 							class="alert alert-danger" role="alert">
@@ -59,9 +60,9 @@
 				</div>
 
 				<div class="col-sm-12">
-					<label class="form-label">Descripcion:</label> <input type="text"
+					<label class="form-label">Descripción:</label> <input type="text"
 						th:field="*{descripcionTrabajo}" class="form-control"
-						placeholder="Ingrese la descripcion de trabajo"></input> <small
+						placeholder="Ingrese la descripción de trabajo"></input> <small
 						th:errorclass="'form-control alert-danger'"
 						th:if="${#fields.hasErrors('descripcionTrabajo')}"
 						th:errors="*{descripcionTrabajo}"></small>
