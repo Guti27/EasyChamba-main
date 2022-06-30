@@ -93,4 +93,11 @@ public class ContratoController {
 		}
 	}
 
+	@RequestMapping("/reporte")
+	public String cantidadTipoTrabajos(Map<String, Object> model) {
+
+		model.put("listaSueldoPromedioRubro", contratoService.SueldoPromedioRubro());
+		return "contrato/report";
+	}
+
 }

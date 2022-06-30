@@ -17,4 +17,6 @@ public interface IContratoService {
 
 	public void update(Contrato contrato);
 
+	public List<String[]> SueldoPromedioRubro();
+
 }

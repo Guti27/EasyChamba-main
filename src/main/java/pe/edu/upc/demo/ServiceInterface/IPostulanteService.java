@@ -17,4 +17,6 @@ public interface IPostulanteService {
 
 	public void update(Postulante postulante);
 
+	public List<String[]> PostulacionesTrabajo();
+
 }

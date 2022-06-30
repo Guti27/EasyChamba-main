@@ -11,11 +11,11 @@ import pe.edu.upc.demo.Repositories.IComentarioRepository;
 import pe.edu.upc.demo.ServiceInterface.IComentarioService;
 
 @Service
-public class ComentarioServiceImpl implements IComentarioService{
+public class ComentarioServiceImpl implements IComentarioService {
 
 	@Autowired
 	private IComentarioRepository comentarioRepository;
-	
+
 	@Override
 	public void insert(Comentario comentario) {
 		// TODO Auto-generated method stub
@@ -44,6 +44,11 @@ public class ComentarioServiceImpl implements IComentarioService{
 	public void update(Comentario comentario) {
 		// TODO Auto-generated method stub
 		comentarioRepository.save(comentario);
+	}
+
+	@Override
+	public List<String[]> TrabajadorRecomendaciones() {
+		return comentarioRepository.TrabajadorRecomendaciones();
 	}
 
 }

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<header th:replace="master/master :: header"></header>
+	<div class="container">
+		<hr style="background-color: #fdfdfd" />
+		<div
+			style="font-family: 'Roboto Condensed', sans-serif; font-size: 150%;">Sueldo
+			promedio por rubro</div>
+		<hr style="background-color: #FA251B" />
+		<div>
+			<div class="table-responsive">
+				<table class="table table-white">
+					<thead>
+						<tr>
+
+							<th scope="col">ID Rubro</th>
+							<th scope="col">Rubro</th>
+							<th scope="col">Sueldo promedio</th>
+						</tr>
+					</thead>
+					<tbody id="rubroSueldoPromedio-list">
+						<tr th:each="tra:${listaSueldoPromedioRubro}">
+							<td th:text="${tra[0]}"></td>
+							<td th:text="${tra[1]}"></td>
+							<td th:text="${tra[2]}"></td>
+
+
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

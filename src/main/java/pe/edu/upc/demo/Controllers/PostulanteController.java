@@ -92,4 +92,10 @@ public class PostulanteController {
 		return "redirect:/ppostulante/list";
 	}
 
+	@RequestMapping("/reporte")
+	public String cantidadTipoTrabajos(Map<String, Object> model) {
+
+		model.put("listaPostulacionesTrabajo", postulanteService.PostulacionesTrabajo());
+		return "postulante/report";
+	}
 }

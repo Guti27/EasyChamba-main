@@ -46,4 +46,10 @@ public class ContratoServiceImpl implements IContratoService {
 		contratoRepository.save(contrato);
 	}
 
+	@Override
+	public List<String[]> SueldoPromedioRubro() {
+
+		return contratoRepository.SueldoPromedioRubro();
+	}
+
 }

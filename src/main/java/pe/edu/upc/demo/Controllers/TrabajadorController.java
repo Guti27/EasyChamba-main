@@ -92,4 +92,11 @@ public class TrabajadorController {
 		return "redirect:/ttrabajador/list";
 	}
 
+	@RequestMapping("/reporte")
+	public String cantidadTipoTrabajos(Map<String, Object> model) {
+
+		model.put("listaCantidadTrabajadorepoRubro", trabajadorService.CantidadTrabajadorepoRubro());
+		return "trabajador/report";
+	}
+
 }

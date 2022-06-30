@@ -47,4 +47,10 @@ public class PostulanteServiceImpl implements IPostulanteService {
 
 	}
 
+	@Override
+	public List<String[]> PostulacionesTrabajo() {
+
+		return postulanteRepository.PostulacionesTrabajo();
+	}
+
 }

@@ -49,4 +49,10 @@ public class TrabajadorServiceImpl implements ITrabajadorService {
 
 	}
 
+	@Override
+	public List<String[]> CantidadTrabajadorepoRubro() {
+
+		return trabajadorRepository.CantidadTrabajadorepoRubro();
+	}
+
 }

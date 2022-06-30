@@ -91,4 +91,11 @@ public class ComentarioController {
 
 	}
 
+	@RequestMapping("/reporte")
+	public String cantidadTipoTrabajos(Map<String, Object> model) {
+
+		model.put("listaTrabajadorRecomendaciones", comentarioService.TrabajadorRecomendaciones());
+		return "comentario/report";
+	}
+
 }

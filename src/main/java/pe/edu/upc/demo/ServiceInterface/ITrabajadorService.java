@@ -17,4 +17,6 @@ public interface ITrabajadorService {
 
 	public void update(Trabajador trabajador);
 
+	public List<String[]> CantidadTrabajadorepoRubro();
+
 }
