@@ -27,6 +27,11 @@ public class PersonController {
 	@Autowired
 	private IPersonService personService;
 
+	@GetMapping("/inicio")
+	public String inicio() {
+		return "inicio/inicio";
+	}
+
 	@GetMapping("/new")
 	public String newPerson(Model model) {
 		model.addAttribute("p", new Person());
@@ -101,20 +106,18 @@ public class PersonController {
 		if (binRes.hasErrors()) {
 			return "persona/frmActualiza";
 		} else {
-			/*int rpta = personService.insert(p);
-			int rpta2 = personService.insert2(p);
-			if (rpta > 0) {
-				model.addAttribute("mensaje", "Este DNI ya ha sido registrado, por favor, ingrese otro.");
-				return "persona/frmActualiza";
-			}
-			if (rpta2 > 0) {
-				model.addAttribute("mensaje1", "Este correo ya ha sido registrado, por favor, ingrese otro.");
-				return "persona/frmActualiza";
-			}
-
-			else {*/
-				personService.update(p);
-			//}
+			/*
+			 * int rpta = personService.insert(p); int rpta2 = personService.insert2(p); if
+			 * (rpta > 0) { model.addAttribute("mensaje",
+			 * "Este DNI ya ha sido registrado, por favor, ingrese otro."); return
+			 * "persona/frmActualiza"; } if (rpta2 > 0) { model.addAttribute("mensaje1",
+			 * "Este correo ya ha sido registrado, por favor, ingrese otro."); return
+			 * "persona/frmActualiza"; }
+			 * 
+			 * else {
+			 */
+			personService.update(p);
+			// }
 			return "redirect:/ppersons/list";
 		}
 	}

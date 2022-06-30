@@ -25,7 +25,7 @@
 				<div class="col-sm-12">
 					<label class="form-label">DNI:</label> <input type="text"
 						maxlength="8" th:field="*{dniPerson}" class="form-control"
-						placeholder="Ingrese su DNI"></input> <small
+						readonly="readonly" placeholder="Ingrese su DNI"></input> <small
 						th:errorclass="'form-control alert-danger'"
 						th:if="${#fields.hasErrors('dniPerson')}" th:errors="*{dniPerson}"></small>
 				</div>
@@ -54,7 +54,8 @@
 				<div class="col-sm-12">
 					<label class="form-label">Correo:</label> <input type="email"
 						pattern=".+@[a-zA-Z0-9.-]+[.]+(.+)" th:field="*{emailPerson}"
-						class="form-control" placeholder="Ingrese su correo"></input> <small
+						class="form-control" readonly="readonly"
+						placeholder="Ingrese su correo"></input> <small
 						th:errorclass="'form-control alert-danger'"
 						th:if="${#fields.hasErrors('emailPerson')}"
 						th:errors="*{emailPerson}"></small>
