@@ -33,7 +33,7 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
 	@Transactional
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 		
-		 Users user = new Users(); user.setId((long) 1); user.setUsername("admin");
+		 /*Users user = new Users(); user.setId((long) 1); user.setUsername("admin");
 		 user.setPassword("123"); user.setPassword(passwordEncoder.encode("123"));
 		 //user.setRoles(roleRepository.findByRol("ROLE_ADMIN"));
 		 //user.setRoles(roleRepository.findByName("ROLE_ADMIN"));
@@ -51,7 +51,7 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
 		 //Role rol2 = new Role(); //rol2.setRol("ROLE_USER");
 		 //roleRepository.save(rol2);
 		 
-		 alreadySetup = true;
+		 alreadySetup = true;*/
 		 
 	}
 }
